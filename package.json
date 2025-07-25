@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && git add . && git commit -m \"production deploy\" && git push origin main"
+    "deploy": "bash ./deploy.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
