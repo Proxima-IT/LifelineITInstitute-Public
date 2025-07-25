@@ -22,7 +22,7 @@ const TestimonialCard = ({review}) => {
         <div className="flex flex-col items-center lg:items-start">
           <h3 className="text-xl font-semibold text-gray-800 text-center">{review.Name}</h3>
           <p className="text-sm text-gray-500 my-3">Student of Lifeline IT Institute</p>
-          <p className="text-gray-600 text-sm leading-relaxed text-left">
+          <p className="text-gray-600 text-sm leading-relaxed text-left my-3">
             {review.ReviewText}
           </p>
           {/* Hardcoded rating stars */}
