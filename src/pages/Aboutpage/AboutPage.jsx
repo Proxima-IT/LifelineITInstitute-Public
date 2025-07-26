@@ -284,7 +284,7 @@ const AboutPage = () => {
       </LazyLoadWrapper>
 
       <LazyLoadWrapper>
-        <section className="bg-accent py-12 px-4 md:px-8 w-9/12 mx-auto rounded-sm my-8">
+        <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
             {/* Owner Image */}
             <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">

@@ -232,49 +232,49 @@ const Header = () => {
                 <Link
                   onClick={handleClick}
                   to="/"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Home
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/courses"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Courses
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/certificate"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Certificate Verify
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/success-story"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Success Story
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/student-review"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Student Reviews
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/about"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   About Us
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/contact"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                   Contact
                 </Link>
@@ -282,14 +282,14 @@ const Header = () => {
                 {/* more options  */}
                 <Link
                   to="/"
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    Free Software
                 </Link>
 
                 <Link
                   to="/"
-                 className="bg-gray-200 rounded px-3 py-1 text-black"
+                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    Free Resources
                 </Link>
@@ -297,28 +297,28 @@ const Header = () => {
                 <Link
                   to="/"
                 
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    Join as a Mentor
                 </Link>
                 <Link
                   to="/"
                  
-                  className="bg-gray-200 rounded px-3 py-1 text-black"
+                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    Our Team
                 </Link>
                 <Link
                   to="/"
                   // onClick={handleLogout}
-                 className="bg-gray-200 rounded px-3 py-1 text-black"
+                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    Our Agency
                 </Link>
 
                 <HashLink
                   to="/about#faq"
-                 className="bg-gray-200 rounded px-3 py-1 text-black"
+                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
                 >
                    FAQ
                 </HashLink>
