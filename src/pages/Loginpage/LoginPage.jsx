@@ -57,8 +57,7 @@ const LoginPage = () => {
           confirmButtonText: "Cool!",
         })
         setTimeout(() => {
-          // window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
-          // window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`;
+          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
         }, 3000)
       }
     } catch (error) {
