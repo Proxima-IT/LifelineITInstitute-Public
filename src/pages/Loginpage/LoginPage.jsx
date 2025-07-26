@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
-import "../../Footer.css"
-import { Link, useNavigate } from "react-router-dom"
-import { Checkbox } from "@mui/material"
-import axios from "axios"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
+import React, { useEffect, useState } from "react";
+import "../../Footer.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Checkbox } from "@mui/material";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const LoginPage = () => {
-  const [checking, setChecking] = useState(true)
-  const navigate = useNavigate()
+  const [checking, setChecking] = useState(true);
+  const navigate = useNavigate();
 
   // Checks if user already logged in
   useEffect(() => {
@@ -17,37 +17,39 @@ const LoginPage = () => {
         const result = await axios.get(
           import.meta.env.VITE_API_URL + "/api/auth/check",
           { withCredentials: true }
-        )
+        );
 
         if (result.data.status) {
           // window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
-          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
+          window.location.href = `${
+            import.meta.env.VITE_STUDENT_DASHBOARD_URL
+          }`;
         } else {
-          setChecking(false)
-          console.log("Okay, not logged in")
+          setChecking(false);
+          console.log("Okay, not logged in");
         }
       } catch (err) {
-        console.error("Error while checking login status:", err)
+        console.error("Error while checking login status:", err);
       }
-    }
+    };
 
-    checkLogin()
-  }, [navigate])
+    checkLogin();
+  }, [navigate]);
 
   const handleLogin = async (e) => {
-    const MySwal = withReactContent(Swal)
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const password = form.password.value
+    const MySwal = withReactContent(Swal);
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
     try {
       const result = await axios.post(
         import.meta.env.VITE_API_URL + "/api/auth/login",
         { email, password },
         { withCredentials: true }
-      )
+      );
 
-      console.log(result)
+      console.log(result);
 
       if (result.data.success) {
         MySwal.fire({
@@ -55,10 +57,12 @@ const LoginPage = () => {
           text: result.data.message,
           icon: "success",
           confirmButtonText: "Cool!",
-        })
+        });
         setTimeout(() => {
-          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
-        }, 3000)
+          window.location.href = `${
+            import.meta.env.VITE_STUDENT_DASHBOARD_URL
+          }`;
+        }, 3000);
       }
     } catch (error) {
       MySwal.fire({
@@ -66,12 +70,12 @@ const LoginPage = () => {
         text: "Invalid Credintials, please cross check your data",
         icon: "error",
         confirmButtonText: "Okay",
-      })
-      console.error("Axios Error:", error.response?.data || error.message)
+      });
+      console.error("Axios Error:", error.response?.data || error.message);
     }
-  }
+  };
 
-  if (checking) return null
+  // if (checking) return null
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4">
@@ -88,6 +92,7 @@ const LoginPage = () => {
                 id="email"
                 name="email"
                 placeholder=" "
+                required
                 className="
                     peer
                     w-full pt-6 pb-2 px-4
@@ -102,14 +107,14 @@ const LoginPage = () => {
                     focus:border-blue-500
                     focus:shadow-[0_10px_25px_-5px_rgba(59,130,246,0.2)]
                     hover:border-gray-400
-                  "
+                "
               />
 
               <label
                 htmlFor="email"
                 className="
-                    absolute left-4 text-gray-400 pointer-events-none transition-all duration-300 ease-in-out 
-                    top-1/2 -translate-y-1/2 text-base 
+                    absolute left-4 text-gray-400 pointer-events-none transition-all duration-300 ease-in-out
+                    top-1/2 -translate-y-1/2 text-base
                     peer-placeholder-shown:top-1/2
                     peer-placeholder-shown:text-base
                     peer-focus:top-2
@@ -117,8 +122,13 @@ const LoginPage = () => {
                     peer-focus:font-medium
                     peer-focus:text-blue-600
                     peer-focus:scale-90
+                    peer-valid:top-2
+                    peer-valid:text-sm
+                    peer-valid:font-medium
+                    peer-valid:text-blue-600
+                    peer-valid:scale-90
                     transform origin-left
-                  "
+                "
               >
                 Email*
               </label>
@@ -126,43 +136,49 @@ const LoginPage = () => {
               <div className="absolute bottom-0 left-1/2 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 ease-in-out transform -translate-x-1/2 w-0"></div>
             </div>
 
-            <div className="relative mb-6">
+             <div className="relative mb-6">
               <input
                 type="password"
-                id="pass"
+                id="password"
                 name="password"
                 placeholder=" "
+                required
                 className="
-                      peer
-                      w-full pt-6 pb-2 px-4
-                      text-gray-700
-                      bg-transparent
-                      border-0 border-b-2 border-gray-300
-                      rounded-lg
-                      transition-all duration-300 ease-in-out
-                      outline-none
-                      resize-none
-                      text-base
-                      focus:border-blue-500
-                      focus:shadow-[0_10px_25px_-5px_rgba(59,130,246,0.2)]
-                      hover:border-gray-400
-                    "
+                    peer
+                    w-full pt-6 pb-2 px-4
+                    text-gray-700
+                    bg-transparent
+                    border-0 border-b-2 border-gray-300
+                    rounded-lg
+                    transition-all duration-300 ease-in-out
+                    outline-none
+                    resize-none
+                    text-base
+                    focus:border-blue-500
+                     focus:shadow-[0_10px_25px_-5px_rgba(59,130,246,0.2)]
+                    hover:border-gray-400
+                "
               />
 
               <label
-                htmlFor="pass"
+                htmlFor="password"
                 className="
-                      absolute left-4 text-gray-400 pointer-events-none transition-all duration-300 ease-in-out 
-                      top-1/2 -translate-y-1/2 text-base
-                      peer-placeholder-shown:top-1/2
-                      peer-placeholder-shown:text-base
-                      peer-focus:top-2
-                      peer-focus:text-sm
-                      peer-focus:font-medium
-                      peer-focus:text-blue-600
-                      peer-focus:scale-90
-                      transform origin-left
-                    "
+                    absolute left-4 text-gray-400 pointer-events-none transition-all duration-300 ease-in-out
+                    top-1/2 -translate-y-1/2 text-base
+                    peer-placeholder-shown:top-1/2
+                    peer-placeholder-shown:text-base
+                    peer-focus:top-2
+                    peer-focus:text-sm
+                    peer-focus:font-medium
+                    peer-focus:text-blue-600
+                    peer-focus:scale-90
+                    peer-valid:top-2
+                    peer-valid:text-sm
+                    peer-valid:font-medium
+                    peer-valid:text-blue-600
+                    peer-valid:scale-90
+                    transform origin-left
+                "
               >
                 Password*
               </label>
@@ -216,7 +232,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

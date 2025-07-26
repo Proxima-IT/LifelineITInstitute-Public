@@ -140,6 +140,53 @@ const AboutPage = () => {
         </div>
       </LazyLoadWrapper>
 
+        <LazyLoadWrapper>
+        <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+            {/* Owner Image */}
+            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">
+              <img
+                src={owner} // Change to actual owner image path
+                alt="Owner"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Owner Info */}
+            <div className="text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+                Meet Our Founder
+              </h2>
+              <p className="mt-2 text-lg font-semibold text-primary">
+                Lifeline IT
+              </p>
+              <p className="mt-4 text-gray-600 leading-relaxed max-w-xl">
+                Driven by a passion for innovation and compassion, Nusrat Meem
+                founded this platform to bring warmth and connection to every
+                visitor. With a background in creative design and community
+                service, she believes in using technology for good.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4 justify-start">
+                <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
+                <SocialIcon
+                  icon={<FaFacebookF />}
+                  color="#3b5998"
+                  link="https://www.facebook.com/lifeline.itti/"
+                />
+                <SocialIcon
+                  icon={<FaYoutube />}
+                  color="#FF0000"
+                  link="https://www.youtube.com/@LifelineITInstitute"
+                />
+
+                <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
+                <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </LazyLoadWrapper>
+
       {/* FAQ  */}
 
       <LazyLoadWrapper>
@@ -283,52 +330,7 @@ const AboutPage = () => {
         </Accordion>
       </LazyLoadWrapper>
 
-      <LazyLoadWrapper>
-        <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            {/* Owner Image */}
-            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">
-              <img
-                src={owner} // Change to actual owner image path
-                alt="Owner"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Owner Info */}
-            <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-                Meet Our Founder
-              </h2>
-              <p className="mt-2 text-lg font-semibold text-primary">
-                Lifeline IT
-              </p>
-              <p className="mt-4 text-gray-600 leading-relaxed max-w-xl">
-                Driven by a passion for innovation and compassion, Nusrat Meem
-                founded this platform to bring warmth and connection to every
-                visitor. With a background in creative design and community
-                service, she believes in using technology for good.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4 justify-start">
-                <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
-                <SocialIcon
-                  icon={<FaFacebookF />}
-                  color="#3b5998"
-                  link="https://www.facebook.com/lifeline.itti/"
-                />
-                <SocialIcon
-                  icon={<FaYoutube />}
-                  color="#FF0000"
-                  link="https://www.youtube.com/@LifelineITInstitute"
-                />
-
-                <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
-                <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
-              </div>
-            </div>
-          </div>
-        </section>
-      </LazyLoadWrapper>
+    
     </div>
   );
 };

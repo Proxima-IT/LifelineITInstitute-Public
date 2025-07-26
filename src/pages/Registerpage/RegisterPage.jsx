@@ -59,6 +59,7 @@ const RegisterPage = () => {
         { email },
         { withCredentials: true }
       )
+      console.log(result)
       resultMessage = result.data.message
       if (result.data) navigate("/otppage")
     } catch (error) {
@@ -72,7 +73,7 @@ const RegisterPage = () => {
     }
   }
 
-  if (checking) return null
+  // if (checking) return null
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4">
