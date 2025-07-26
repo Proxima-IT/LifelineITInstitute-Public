@@ -200,7 +200,7 @@ const Header = () => {
 
           {/* Mobile Drawer */}
           <div
-            className={`fixed z-50 top-0 right-0 h-screen overflow-auto lg:hidden w-11/12 bg-[#0B254C] border-l border-neutral-300 shadow-lg transition-transform duration-500 ease-in-out transform ${
+            className={`fixed z-50 top-0 right-0 h-screen overflow-auto lg:hidden w-8/12 bg-[#0B254C]  shadow-lg transition-transform duration-500 ease-in-out transform ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -210,7 +210,7 @@ const Header = () => {
                 to="/"
                 className="text-lg font-semibold text-sky-700 flex items-center gap-x-2"
               >
-                <img src={logo} alt="" className="w-1/2 md:w-1/3" />
+                <img src={logo} alt="" className="w-5/6 md:w-1/3" />
               </Link>
               <div className="lg:hidden flex justify-end py-6">
                 <button
@@ -279,21 +279,7 @@ const Header = () => {
                   Contact
                 </Link>
 
-                {/* more options  */}
-                <Link
-                  to="/"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
-                >
-                   Free Software
-                </Link>
-
-                <Link
-                  to="/"
-                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
-                >
-                   Free Resources
-                </Link>
-
+               
                 <Link
                   to="/"
                 
