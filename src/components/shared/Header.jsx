@@ -200,7 +200,7 @@ const Header = () => {
 
           {/* Mobile Drawer */}
           <div
-            className={`fixed z-50 top-0 right-0 h-screen overflow-auto lg:hidden w-8/12 bg-[#0B254C]  shadow-lg transition-transform duration-500 ease-in-out transform ${
+            className={`fixed z-50 top-0 right-0 h-screen overflow-auto lg:hidden w-8/12 bg-gradient-to-b from-[#0B254C] via-[#348fd1] to-[#072043]  shadow-lg transition-transform duration-500 ease-in-out transform ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
@@ -222,7 +222,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="border-b border-neutral-300"></div>
+            <div className="border-b border-[#9fe9ff88]"></div>
 
             <div className="flex-1 flex flex-col items-center justify-between gap-6 p-6">
               <ul
@@ -232,49 +232,49 @@ const Header = () => {
                 <Link
                   onClick={handleClick}
                   to="/"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Home
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/courses"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Courses
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/certificate"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Certificate Verify
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/success-story"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Success Story
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/student-review"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Student Reviews
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/about"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   About Us
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/contact"
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Contact
                 </Link>
@@ -283,28 +283,28 @@ const Header = () => {
                 <Link
                   to="/"
                 
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                    Join as a Mentor
                 </Link>
                 <Link
                   to="/"
                  
-                   className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                    Our Team
                 </Link>
                 <Link
                   to="/"
                   // onClick={handleLogout}
-                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                    Our Agency
                 </Link>
 
                 <HashLink
                   to="/about#faq"
-                  className="border border-gray-200 rounded px-3 py-1 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                    FAQ
                 </HashLink>
