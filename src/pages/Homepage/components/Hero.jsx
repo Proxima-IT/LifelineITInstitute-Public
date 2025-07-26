@@ -29,13 +29,13 @@ const Hero = () => {
 
   return (
     <div className=" space-y-10 mt-10">
-      {offer && (
+      {offer && ( 
         <div
           className={`bg-accent w-full mx-auto h-20 md:h-24 lg:h-28 relative ${
             close ? "hidden" : "block"
           }`}
         >
-          <img src={banner} alt="" className="h-full w-full bg-cover" />
+          <img src={banner} alt="" className="h-full w-full bg-cover " />
           <span
             onClick={() => setClose(!close)}
             className="text-black bg-white rounded-full p-1 font-bold text-xl absolute right-0 top-0 cursor-pointer"
@@ -72,8 +72,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-sm text-secondary ">
-            Lifeline IT is operated by a Govt. approved organization | Est. 2021
-            | Over 25,000+ Students Trained | Trusted by 2.30 Lakh+ Followers on
+            Lifeline IT is operated by a Govt. approved organization | Est. 18<sup>th</sup> August, 2021
+            | Over 25,000+ Students Trained | Trusted by 2.50 Lakh+ Followers on
             Social Media.
           </p>
 

@@ -22,7 +22,7 @@ const CertificateVerify = () => {
       >
         <LazyLoadWrapper></LazyLoadWrapper>
         <div className="bg-white p-[35px_30px] rounded-2xl shadow-[0_12px_30px_#00000014] max-w-[600px] w-full text-center transition ease-in-out duration-300 hover:-translate-y-0.5">
-          <h2 className="text-[26px] text-[#0B254C] mb-[25px]">
+          <h2 className="text-[26px] text-[#1273eb] mb-[25px]">
             Verify Your Certificate
           </h2>
 
@@ -31,11 +31,11 @@ const CertificateVerify = () => {
               type="text"
               id="cerInput"
               ref={inputRef}
-              className="w-full p-[12px_16px] text-[10px] lg:text-[16px] border-2 border-[#0B254C] rounded-lg outline-none transition duration-300 focus:shadow-[0_0_8px_#3e7ad3]"
+              className="w-full p-[12px_16px] text-[10px] lg:text-[16px] border-2 border-[#1273eb] rounded-lg outline-none transition duration-300 focus:shadow-[0_0_8px_#3e7ad3]"
               placeholder="Enter Certificate Number / Student ID"
             />
             <button
-              className="w-full bg-[#0B254C] text-white border-0 p-[12px_18px] text-[16px] rounded-lg cursor-pointer transition-colors duration-300 flex items-center justify-center gap-2 hover:bg-[#0b254cd1]"
+              className="w-full bg-[#1273eb] text-white border-0 p-[12px_18px] text-[16px] rounded-lg cursor-pointer transition-colors duration-300 flex items-center justify-center gap-2 hover:bg-[#0b254cd1]"
               onClick={cerVerify}
             >
               Verify

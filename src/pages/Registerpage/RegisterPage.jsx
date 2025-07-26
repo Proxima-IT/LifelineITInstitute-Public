@@ -59,8 +59,6 @@ const RegisterPage = () => {
         { withCredentials: true }
       )
 
-      console.log(result)
-
       if (result.data) navigate("/otppage")
     } catch (error) {
       MySwal.fire({
@@ -75,7 +73,7 @@ const RegisterPage = () => {
     }
   }
 
-  if (checking) return null
+  // if (checking) return null
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4">
