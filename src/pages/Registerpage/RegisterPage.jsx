@@ -19,7 +19,7 @@ const RegisterPage = () => {
         )
 
         if (result.data.status) {
-           window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
+          window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`
         } else {
           setChecking(false)
           console.log("Okay, not logged in")
@@ -52,21 +52,21 @@ const RegisterPage = () => {
 
     const MySwal = withReactContent(Swal)
 
-    let resultMessage
     try {
       const result = await axios.post(
         import.meta.env.VITE_API_URL + "/api/auth/otp-verify",
         { email },
         { withCredentials: true }
       )
-      console.log(result)
-      resultMessage = result.data.message
+
       if (result.data) navigate("/otppage")
     } catch (error) {
       MySwal.fire({
-        title: "Oops?",
-        text: resultMessage || "Invalid credentials, please try again.",
-        icon: "question",
+        title: "Oops!",
+        text:
+          error.response.data.message ||
+          "Invalid credentials, please try again.",
+        icon: "warning",
         confirmButtonText: "Oops!",
       })
       console.error("Axios Error:", error.response?.data || error.message)
