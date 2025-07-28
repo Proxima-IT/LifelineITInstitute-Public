@@ -43,6 +43,7 @@ const Navbar = () => {
     }, 100) // delay to ensure page loads
   }
   useEffect(() => {
+    // ! WILL BE REMOVING THIS PART OF CODE
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
         withCredentials: true,
@@ -50,6 +51,8 @@ const Navbar = () => {
       .then(() => {
         console.log("Logout Done")
       })
+
+    // ! WILL BE REMOVING THIS PART OF CODE
     if (isOpen) {
       document.body.style.overflow = "hidden"
     } else {
