@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
+import React, { useEffect, useState } from "react"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,8 +8,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { Link } from "react-router-dom";
+} from "@/components/ui/navigation-menu"
+import { Link } from "react-router-dom"
 import {
   Avatar,
   Box,
@@ -19,50 +19,58 @@ import {
   MenuItem,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { FaUserGraduate } from "react-icons/fa";
-import { IoMdLock } from "react-icons/io";
-import { FaArrowRightFromBracket, FaQ } from "react-icons/fa6";
-import { GrCloudSoftware, GrResources } from "react-icons/gr";
-import { SiCodementor } from "react-icons/si";
-import { AiOutlineTeam } from "react-icons/ai";
-import { HashLink } from "react-router-hash-link";
+} from "@mui/material"
+import { FaUserGraduate } from "react-icons/fa"
+import { IoMdLock } from "react-icons/io"
+import { FaArrowRightFromBracket, FaQ } from "react-icons/fa6"
+import { GrCloudSoftware, GrResources } from "react-icons/gr"
+import { SiCodementor } from "react-icons/si"
+import { AiOutlineTeam } from "react-icons/ai"
+import { HashLink } from "react-router-hash-link"
+import axios from "axios"
 
 const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   //  const toggleNavbar = () => setIsOpen(!isOpen)
 
-   const handleClick = () => {
+  const handleClick = () => {
     // navigate("/our-courses");
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 100); // delay to ensure page loads
-  };
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }, 100) // delay to ensure page loads
+  }
   useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
+        withCredentials: true,
+      })
+      .then(() => {
+        console.log("Logout Done")
+      })
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "auto"
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+    setAnchorElNav(event.currentTarget)
+  }
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    setAnchorElUser(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    setAnchorElNav(null)
+  }
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    setAnchorElUser(null)
+  }
 
   return (
     <div className="">
@@ -246,10 +254,10 @@ const Navbar = () => {
         </NavigationMenuList>
       </NavigationMenu>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
 
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
