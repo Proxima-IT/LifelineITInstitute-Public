@@ -1,4 +1,4 @@
-# LifeLine IT Institute 🎓
+# LifeLine IT Institute Codes 🎓
 
 <!--
 _Developed by — Proxima IT_
