@@ -3,7 +3,7 @@ import React from "react";
 const Refund = () => {
   return (
     <div>
-      <div className="min-h-screen bg-white text-gray-800 px-4 md:px-12 py-10 max-w-4xl mx-auto font-sans leading-relaxed">
+      <div className="min-h-screen bg-white my-4 text-gray-800 px-4 md:px-12 py-10 max-w-4xl mx-auto font-sans leading-relaxed">
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center flex items-center justify-center gap-2">
           <span>🔁</span> Refund Policy

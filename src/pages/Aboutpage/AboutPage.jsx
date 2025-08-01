@@ -125,9 +125,14 @@ const AboutPage = () => {
                 ample opportunities for skill development and employment.
               </p>
 
-              <h1 className="mt-3 text-lg font-semibold text-primary">
+              <h1  className="mt-3 text-lg font-semibold text-primary">
                 Message to Students:
               </h1>
+
+              
+              {/* to point at faq section properly  */}
+              <div id="faq"></div>
+
               <p className="mt-2 text-gray-600 leading-relaxed max-w-xl">
                 “Support your family while learning valuable skills from any
                 reputable IT institute. Together, we can build a stronger future
@@ -157,10 +162,7 @@ const AboutPage = () => {
       {/* FAQ  */}
 
       <LazyLoadWrapper>
-        <h1
-          id="faq"
-          className="mt-14  text-xl md:text-4xl lg:text-5xl text-accent scroll-smooth font-bold"
-        >
+        <h1 className="mt-14  text-xl md:text-4xl lg:text-5xl text-accent scroll-smooth font-bold">
           Frequently Asked Question
         </h1>
 
