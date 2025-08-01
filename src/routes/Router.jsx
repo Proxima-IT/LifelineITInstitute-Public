@@ -14,6 +14,9 @@ import StudentReview from "@/pages/StudentReview/StudentReview"
 import CertificateVerify from "@/pages/CertificateVerify/CertificateVerify"
 import CourseDetails from "@/pages/CourseDetails/CourseDetails"
 import ErrorPage from "@/pages/Error/ErrorPage"
+import PrivacyPolicy from "@/pages/General/PrivacyPolicy"
+import Terms from "@/pages/General/Terms"
+import Refund from "@/pages/General/Refund"
 
 const Router = createBrowserRouter([
   {
@@ -68,6 +71,18 @@ const Router = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/terms",
+        element: <Terms></Terms>,
+      },
+      {
+        path: "/refund",
+        element: <Refund></Refund>,
       },
     ],
     

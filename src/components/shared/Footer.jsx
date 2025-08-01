@@ -58,9 +58,15 @@ const Footer = () => {
             <li onClick={handleClick}>
               <Link to="/certificate">Certificate Verify</Link>
             </li>
-            <li>Privacy Policy</li>
-            <li>Refund Policy</li>
-            <li>Terms & Condition</li>
+            <li onClick={handleClick}>
+              <Link to="/privacy">Privacy Policy</Link>
+            </li>
+            <li onClick={handleClick}>
+              <Link to="/refund">Refund Policy</Link>
+            </li>
+            <li onClick={handleClick}>
+              <Link to="/terms">Terms & Condition</Link>
+            </li>
             <li>
               <HashLink to="/about#faq">FAQ</HashLink>
             </li>
@@ -135,8 +141,6 @@ const Footer = () => {
       </div>
       <HelplineButton></HelplineButton>
       <ScrollToTop></ScrollToTop>
-      
-      
     </footer>
   );
 };

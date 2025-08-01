@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
+import React, { useEffect, useState } from "react";
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,8 +8,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { Link } from "react-router-dom"
+} from "@/components/ui/navigation-menu";
+import { Link } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -19,29 +19,29 @@ import {
   MenuItem,
   Tooltip,
   Typography,
-} from "@mui/material"
-import { FaUserGraduate } from "react-icons/fa"
-import { IoMdLock } from "react-icons/io"
-import { FaArrowRightFromBracket, FaQ } from "react-icons/fa6"
-import { GrCloudSoftware, GrResources } from "react-icons/gr"
-import { SiCodementor } from "react-icons/si"
-import { AiOutlineTeam } from "react-icons/ai"
-import { HashLink } from "react-router-hash-link"
-import axios from "axios"
+} from "@mui/material";
+import { FaUserGraduate } from "react-icons/fa";
+import { IoMdLock } from "react-icons/io";
+import { FaArrowRightFromBracket, FaQ } from "react-icons/fa6";
+import { GrCloudSoftware, GrResources } from "react-icons/gr";
+import { SiCodementor } from "react-icons/si";
+import { AiOutlineTeam } from "react-icons/ai";
+import { HashLink } from "react-router-hash-link";
+import axios from "axios";
 
 const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   //  const toggleNavbar = () => setIsOpen(!isOpen)
 
   const handleClick = () => {
     // navigate("/our-courses");
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }, 100) // delay to ensure page loads
-  }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100); // delay to ensure page loads
+  };
   useEffect(() => {
     // ! WILL BE REMOVING THIS PART OF CODE
     axios
@@ -49,31 +49,31 @@ const Navbar = () => {
         withCredentials: true,
       })
       .then(() => {
-        console.log("Logout Done")
-      })
+        console.log("Logout Done");
+      });
 
     // ! WILL BE REMOVING THIS PART OF CODE
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget)
-  }
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+    setAnchorElUser(null);
+  };
 
   return (
     <div className="">
@@ -113,16 +113,31 @@ const Navbar = () => {
               Students
             </NavigationMenuTrigger>
             <NavigationMenuContent side="bottom" align="start" sideOffset={8}>
-              <ul className="grid gap-2 md:w-[100px] lg:w-[200px] ">
-                <li className="flex flex-col items-start p-4 gap-4">
+              <ul className="grid gap-2 md:w-[100px] lg:w-[200px] w-fit ">
+                <li className="flex flex-col items-start p-3 gap-2 text-lg">
                   <NavigationMenuLink asChild onClick={handleClick}>
-                    <Link to="/certificate">Certificate Verify</Link>
+                    <Link
+                      to="/certificate"
+                      className="hover:bg-gray-100 px-3 py-2 rounded-lg"
+                    >
+                      Certificate Verify
+                    </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild onClick={handleClick}>
-                    <Link to="/success-story">Success Story</Link>
+                    <Link
+                      to="/success-story"
+                      className="hover:bg-gray-100 px-3 py-2 rounded-lg"
+                    >
+                      Success Story
+                    </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild onClick={handleClick}>
-                    <Link to="/student-review">Student Reviews</Link>
+                    <Link
+                      to="/student-review"
+                      className="hover:bg-gray-100 px-3 py-2 rounded-lg"
+                    >
+                      Student Reviews
+                    </Link>
                   </NavigationMenuLink>
                 </li>
               </ul>
@@ -159,108 +174,67 @@ const Navbar = () => {
             </NavigationMenuLink>
           </NavigationMenuItem>
 
-          <NavigationMenuItem>
-            <Box
-              sx={{
-                flexGrow: 0,
-              }}
-            >
-              <Tooltip title="Open Menu">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: 0 }}
-                  // className="border-2 border-blue-700"
+          <NavigationMenu>
+            <NavigationMenuList className="gap-2 relative ">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent text-navmenu text-xl font-roboto">
+                  More
+                </NavigationMenuTrigger>
+                <NavigationMenuContent
+                  side="bottom"
+                  align="start"
+                  sideOffset={-20}
                 >
-                  {/* <Avatar alt="" src={''} /> */}
-                  <Link
-                    to="#"
-                    className="bg-transparent text-navmenu text-xl font-roboto "
-                  >
-                    More
-                  </Link>
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "38px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem
-                  onClick={handleCloseUserMenu}
-                  sx={{
-                    "&:hover": {
-                      backgroundColor: "transparent", // removes hover background
-                    },
-                    padding: 1.5,
-                    // optional: remove default padding if needed
-                  }}
-                >
-                  <Typography sx={{ textAlign: "center" }}>
-                    <Link
-                      to="/"
-                      className="flex items-center gap-2 hover:bg-gray-100 transition-all duration-300 p-2 rounded-md pb-2"
-                    >
-                      <GrCloudSoftware /> Free Software
-                    </Link>
-
-                    <Link
-                      to="/"
-                      className="flex items-center gap-2 hover:bg-gray-100 transition-all duration-300  p-2 rounded-md "
-                    >
-                      <GrResources /> Free Resources
-                    </Link>
-
-                    <Link
-                      to="/"
-                      // onClick={handleLogout}
-                      className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md"
-                    >
-                      <SiCodementor /> Join as a Mentor
-                    </Link>
-                    <Link
-                      to="/"
-                      // onClick={handleLogout}
-                      className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md"
-                    >
-                      <AiOutlineTeam /> Our Team
-                    </Link>
-                    <Link
-                      to="/"
-                      // onClick={handleLogout}
-                      className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md"
-                    >
-                      <FaArrowRightFromBracket /> Our Agency
-                    </Link>
-
-                    <HashLink
-                      to="/about#faq"
-                      className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md"
-                    >
-                      <FaQ /> FAQ
-                    </HashLink>
-                  </Typography>
-                </MenuItem>
-              </Menu>
-            </Box>
-          </NavigationMenuItem>
+                  <ul className="grid gap-2 md:w-[100px] lg:w-[200px] w-fit ">
+                    <li className="flex flex-col items-start p-[6px] gap-2 text-lg">
+                      <NavigationMenuLink asChild onClick={handleClick}>
+                        <Link
+                          to="/"
+                          // onClick={handleLogout}
+                          className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md w-full "
+                        >
+                          <SiCodementor /> Join as a Mentor
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild onClick={handleClick}>
+                        <Link
+                          to="/"
+                          // onClick={handleLogout}
+                          className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md w-full"
+                        >
+                          <AiOutlineTeam /> Our Team
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild onClick={handleClick}>
+                        <Link
+                          to="/"
+                          // onClick={handleLogout}
+                          className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md w-full"
+                        >
+                          <FaArrowRightFromBracket /> Our Agency
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild onClick={handleClick}>
+                        <HashLink
+                          to="/about#faq"
+                          className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md w-full"
+                        >
+                          <FaQ /> FAQ
+                        </HashLink>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
 
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
