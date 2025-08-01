@@ -77,11 +77,11 @@ const Header = () => {
   };
 
   return (
-    <div className="p-2 flex items-center justify-around sticky top-0 z-50 bg-[#0c2851] shadow">
+    <div className="p-[10px] flex items-center justify-around sticky top-0 z-50 bg-[#0c2851] shadow">
       {/* Logo */}
       <div className="lg:w-3/12">
         <Link to="/">
-          <img src={logo} alt="Logo" className="w-full md:w-3/4 " />
+          <img src={logo} alt="Logo" className="w-full md:w-2/5 lg:w-[85%] " />
         </Link>
       </div>
 

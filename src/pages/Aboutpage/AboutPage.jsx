@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import mission from "../../assets/mission.jpg";
 import vision from "../../assets/vision.jpg";
 import { Link } from "react-router-dom";
-import owner from "../../assets/owner.jpg";
+import founder from "../../assets/Founder & CEO Image .png";
 import {
   Accordion,
   AccordionContent,
@@ -32,29 +32,6 @@ const AboutPage = () => {
   return (
     <div className="pb-10 font-poppins">
       {/* hero  */}
-      {/* <div className="background-image p-4 w-full h-[280px] md:h-[400px] lg:h-[600px] xxl:h-[720px]">
-      
-
-        <div className="text-secondary space-y-2">
-          <h1
-            data-aos="fade-up"
-            className="text-xl md:text-3xl lg:text-5xl xxl:text-6xl font-semibold"
-          >
-            Take Challenge for Build Your Life.
-          </h1>
-
-          <h1
-            className="text-xl md:text-3xl lg:text-5xl xxl:text-6xl font-semibold"
-            data-aos="fade-up"
-            data-aos-delay="300"
-            data-aos-once="true"
-            data-aos-anchor-placement="top-bottom"
-            // data-aos-disable="mobile" // 🔥 এইটা মূল কাজ করবে
-          >
-            The World Most Lessons for Back to Your Life.
-          </h1>
-        </div>
-      </div> */}
 
       <ImageCarousel></ImageCarousel>
 
@@ -63,11 +40,7 @@ const AboutPage = () => {
       <LazyLoadWrapper>
         <div className="mt-14 w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2  gap-10">
           <div className="">
-            <img
-              src={mission}
-              alt=""
-              className="rounded-xl h-[280px] md:h-[430px]"
-            />
+            <img src={mission} alt="" className="rounded-xl " />
           </div>
           <div className="flex flex-col items-start text-accent gap-5 text-left">
             <button className="rounded-full bg-gold/50 px-5 py-1.5 border border-gold">
@@ -77,19 +50,11 @@ const AboutPage = () => {
               Our Mission
             </h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              saepe voluptas totam animi aspernatur harum pariatur dolorem optio
-              porro illo. Unde possimus veritatis quisquam ea facilis, quam
-              odit? Eligendi velit ad impedit? Nostrum alias aspernatur aliquam
-              et ex nam cumque, praesentium incidunt dicta porro placeat
-              tempora, accusantium deleniti ducimus necessitatibus
-              exercitationem vitae sequi. Eveniet cum eaque, assumenda eligendi
-              itaque impedit minus quaerat? Pariatur ratione, quam culpa
-              sapiente nesciunt recusandae eaque quidem exercitationem corrupti.
-              Alias, iusto vel et tempora quis expedita omnis neque, tempore
-              cupiditate repellat atque tenetur inventore aut aliquid excepturi.
-              Doloremque at libero eaque cumque consequuntur nihil voluptatem
-              aut!
+              Lifeline IT aims to empower the youth with modern, job-ready IT
+              skills. We provide hands-on training based on real-world needs.
+              Our goal is to create opportunities through freelancing and
+              entrepreneurship. We are committed to reducing unemployment across
+              the country.
             </p>
             <Link to="https://www.youtube.com/@LifelineITInstitute">
               <button className="text-white text-center lg:px-[35px] px-[20px] py-[8px] lg:py-[10px] rounded-full shadow-[0_0_10px_#000_80%] bg-gradient-to-r from-[#f09619ee] via-[#e4d653] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center] block font-bold">
@@ -104,7 +69,7 @@ const AboutPage = () => {
 
       <LazyLoadWrapper>
         <div className="mt-14 w-11/12 mx-auto flex flex-col-reverse lg:flex-row gap-10">
-          <div className="flex flex-col text-accent items-start gap-5 text-left">
+          <div className="flex flex-col w-1/2 text-accent items-start gap-5 text-left">
             <button className="rounded-full  bg-gold/50 px-5 py-1.5 border border-gold">
               HOW WE WORK
             </button>
@@ -112,19 +77,11 @@ const AboutPage = () => {
               Our Vission
             </h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-              saepe voluptas totam animi aspernatur harum pariatur dolorem optio
-              porro illo. Unde possimus veritatis quisquam ea facilis, quam
-              odit? Eligendi velit ad impedit? Nostrum alias aspernatur aliquam
-              et ex nam cumque, praesentium incidunt dicta porro placeat
-              tempora, accusantium deleniti ducimus necessitatibus
-              exercitationem vitae sequi. Eveniet cum eaque, assumenda eligendi
-              itaque impedit minus quaerat? Pariatur ratione, quam culpa
-              sapiente nesciunt recusandae eaque quidem exercitationem corrupti.
-              Alias, iusto vel et tempora quis expedita omnis neque, tempore
-              cupiditate repellat atque tenetur inventore aut aliquid excepturi.
-              Doloremque at libero eaque cumque consequuntur nihil voluptatem
-              aut!
+              To become the most trusted and impactful IT training institute in
+              Bangladesh. Producing thousands of successful freelancers, job
+              holders, and entrepreneurs. Building a self-reliant, skilled
+              digital generation for the future. Leading the nation toward a
+              sustainable, tech-driven economy.
             </p>
 
             <Link to="https://www.facebook.com/lifeline.itti">
@@ -134,19 +91,19 @@ const AboutPage = () => {
             </Link>
           </div>
 
-          <div className="">
-            <img src={vision} alt="" className="rounded-xl" />
+          <div className="w-1/2">
+            <img src={vision} alt="" className="rounded-xl " />
           </div>
         </div>
       </LazyLoadWrapper>
 
-        <LazyLoadWrapper>
+      <LazyLoadWrapper>
         <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-8">
             {/* Owner Image */}
             <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">
               <img
-                src={owner} // Change to actual owner image path
+                src={founder} // Change to actual owner image path
                 alt="Owner"
                 className="w-full h-full object-cover"
               />
@@ -155,16 +112,26 @@ const AboutPage = () => {
             {/* Owner Info */}
             <div className="text-center md:text-left">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-                Meet Our Founder
+                Ashraful Islam Rabbi
               </h2>
               <p className="mt-2 text-lg font-semibold text-primary">
-                Lifeline IT
+                Founder & CEO, Lifeline IT Training Institute
               </p>
               <p className="mt-4 text-gray-600 leading-relaxed max-w-xl">
-                Driven by a passion for innovation and compassion, Nusrat Meem
-                founded this platform to bring warmth and connection to every
-                visitor. With a background in creative design and community
-                service, she believes in using technology for good.
+                Ashraful Islam Rabbi is a passionate Computer Science Engineer
+                with over 10 years of professional experience in Graphic Design
+                and Digital Marketing. As the founder of Lifeline IT, his core
+                mission is to eradicate unemployment in Bangladesh by creating
+                ample opportunities for skill development and employment.
+              </p>
+
+              <h1 className="mt-3 text-lg font-semibold text-primary">
+                Message to Students:
+              </h1>
+              <p className="mt-2 text-gray-600 leading-relaxed max-w-xl">
+                “Support your family while learning valuable skills from any
+                reputable IT institute. Together, we can build a stronger future
+                for you and the nation.”
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4 justify-start">
                 <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
@@ -330,7 +297,18 @@ const AboutPage = () => {
         </Accordion>
       </LazyLoadWrapper>
 
-    
+      <LazyLoadWrapper>
+        <div className="mt-10 w-9/12 mx-auto text-white flex items-center justify-between">
+          <div className="flex gap-4 text-2xl">
+            <h1 className="font-bold">Trade License No: </h1>
+            <p>TRAD/CHTG/000307/2025</p>
+          </div>
+          <div className="flex gap-4 text-2xl">
+            <h1 className="font-bold">TIN No: </h1>
+            <p>416683735934</p>
+          </div>
+        </div>
+      </LazyLoadWrapper>
     </div>
   );
 };

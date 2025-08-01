@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Phone, Mail, MessageCircle, HelpCircle } from "lucide-react";
-
+import chat from "../../assets/CHAT-2.png"
 export default function HelplineButton() {
   const [open, setOpen] = useState(false);
 
@@ -28,9 +28,10 @@ export default function HelplineButton() {
       {/* Main Help Button */}
       <button
         onMouseEnter={() => setOpen(true)}
-        className="bg-purple-500 text-white p-4 rounded-full shadow-lg hover:bg-purple-600 transition-all"
+        className="shadow-lg transition-all w-16 rounded-full"
       >
-        <HelpCircle className="w-6 h-6" />
+        {/* <HelpCircle className="w-6 h-6" /> */}
+        <img src={chat} alt=""  />
       </button>
     </div>
   );

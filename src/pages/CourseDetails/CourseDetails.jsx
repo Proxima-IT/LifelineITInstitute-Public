@@ -29,8 +29,8 @@ const CourseDetails = () => {
   console.log(instructors)
 
   return (
-    <div>
-      <div className="mt-10 w-11/12 text-left mx-auto grid grid-cols-1 lg:grid-cols-3 justify-between gap-8">
+    <div className="mt-10 w-11/12 text-left mx-auto">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 justify-between gap-8">
         <div className="space-y-6 col-span-2">
           <h1 className="lg:text-6xl text-accent font-bold">
             {courseDetails?.title}
@@ -40,13 +40,13 @@ const CourseDetails = () => {
           <p className="text-lg text-amber-400">Total Classes: {courseDetails?.totalClasses}</p>
           <div className="bg-white p-4">
             <img
-              src="https://i.ibb.co.com/NpnnggZ/cybersecurity-concept-collage-design.jpg"
+              src={courseDetails?.thumbnail}
               alt=""
             />
           </div>
         </div>
 
-        <div className="bg-accent rounded-md shadow-md flex flex-col h-full  ml-auto border-2 border-gold p-4 space-y-6 ">
+        <div className="bg-accent rounded-md shadow-md flex flex-col h-full  border-2 border-gold p-4 space-y-6 ">
           <div className="relative flex items-center justify-center w-full">
             {/* Video Thumbnail */}
             <div
@@ -125,13 +125,15 @@ const CourseDetails = () => {
           </Link>
         </div>
 
-        <div>
-          <h1 className="font-bold text-xl text-white mb-4">Instructor</h1>
+       
+      </div>
+       <div>
+          <h1 className="font-bold text-xl text-white my-4">Instructor</h1>
         
           {instructors?.map((instructor) => (
             <div
               key={instructor}
-              className="relative group w-64  bg-white p-4 rounded-2xl shadow-md text-center transition"
+              className="relative group w-full md:w-1/3 lg:w-1/4  bg-white p-4 rounded-2xl shadow-md text-center transition"
             >
               {/* Profile Picture */}
               <img
@@ -154,7 +156,6 @@ const CourseDetails = () => {
           ))}
         </div>
         
-      </div>
     </div>
   )
 }

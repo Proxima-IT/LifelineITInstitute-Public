@@ -10,30 +10,44 @@ import "aos/dist/aos.css";
 import "../../../App.css";
 import { IoMdClose } from "react-icons/io";
 import { Typewriter } from "react-simple-typewriter";
+import axios from "axios";
 const Hero = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
   const Offer = "";
   const [offer, setOffer] = useState(false);
+  const [banner, setBanner] = useState("");
   const videoId = "uGx8wsKooBc";
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  useEffect(()=>{
-    if (Offer) {
-    setOffer(true);
-  }
-  },[])
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/general`)
+      .then((res) => {
+        console.log(res.data);
+        // Assuming res.data.offer is boolean or something to decide offer
+        if (res.data) {
+          setOffer(true);
+          setBanner(res.data.bannerImage)
+        } else {
+          setOffer(false);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching general data:", err);
+      });
+  }, []);
+
+  console.log(banner)
 
   return (
     <div className=" space-y-10 mt-10">
-      {offer && ( 
+      {offer && (
         <div
-          className={`bg-accent w-full mx-auto h-20 md:h-24 lg:h-28 relative ${
-            close ? "hidden" : "block"
-          }`}
+          className={`bg-accent w-full mx-auto h-20 md:h-24 lg:h-36 relative ${close ? "hidden": "block"}`}
         >
           <img src={banner} alt="" className="h-full w-full bg-cover " />
           <span
@@ -55,7 +69,7 @@ const Hero = () => {
       </div> */}
       {/* grid grid-cols-1 grid-flow-row-reverse lg:grid-flow-row md:grid-cols-2 */}
 
-      <div className=" flex flex-col-reverse lg:flex-row  gap-8 lg:gap-24 text-left lg:pt-4">
+      <div className=" w-10/12 mx-auto flex flex-col-reverse lg:flex-row  gap-8 lg:gap-24 text-left lg:pt-4">
         {/* left section  */}
         <div className="flex flex-col items-start gap-5">
           <h1 className="text-secondary font-poppins text-2xl md:text-3xl lg:text-4xl font-bold lg:leading-snug whitespace-pre-line">
@@ -72,9 +86,9 @@ const Hero = () => {
           </h1>
 
           <p className="text-sm text-secondary ">
-            Lifeline IT is operated by a Govt. approved organization | Est. 18<sup>th</sup> August, 2021
-            | Over 25,000+ Students Trained | Trusted by 2.50 Lakh+ Followers on
-            Social Media.
+            Lifeline IT is operated by a Govt. approved organization | Est. 18
+            <sup>th</sup> August, 2021 | Over 25,000+ Students Trained | Trusted
+            by 2.50 Lakh+ Followers on Social Media.
           </p>
 
           <div className="flex gap-3 items-center justify-start">

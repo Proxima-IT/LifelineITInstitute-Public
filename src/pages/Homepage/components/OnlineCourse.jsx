@@ -28,7 +28,7 @@ const OnlineCourse = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mt-5">
       <div className="flex justify-center">
         <h1 className="text-2xl font-bold bg-blue-900 rounded-full px-8 py-1.5 text-white">
           Online Courses
