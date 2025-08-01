@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import "../../Footer.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Checkbox } from "@mui/material";
-import axios from "axios";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import React, { useEffect, useState } from "react"
+import "../../Footer.css"
+import { Link, useNavigate } from "react-router-dom"
+import { Checkbox } from "@mui/material"
+import axios from "axios"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 
 const LoginPage = () => {
-  const [checking, setChecking] = useState(true);
-  const navigate = useNavigate();
+  const [checking, setChecking] = useState(true)
+  const navigate = useNavigate()
 
   // Checks if user already logged in
   useEffect(() => {
@@ -17,39 +17,37 @@ const LoginPage = () => {
         const result = await axios.get(
           import.meta.env.VITE_API_URL + "/api/auth/check",
           { withCredentials: true }
-        );
+        )
 
         if (result.data.status) {
           // window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
-          window.location.href = `${
-            import.meta.env.VITE_STUDENT_DASHBOARD_URL
-          }`;
+          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
         } else {
-          setChecking(false);
-          console.log("Okay, not logged in");
+          setChecking(false)
+          console.log("Okay, not logged in")
         }
       } catch (err) {
-        console.error("Error while checking login status:", err);
+        console.error("Error while checking login status:", err)
       }
-    };
+    }
 
-    checkLogin();
-  }, [navigate]);
+    checkLogin()
+  }, [navigate])
 
   const handleLogin = async (e) => {
-    const MySwal = withReactContent(Swal);
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const MySwal = withReactContent(Swal)
+    e.preventDefault()
+    const form = e.target
+    const email = form.email.value
+    const password = form.password.value
     try {
       const result = await axios.post(
         import.meta.env.VITE_API_URL + "/api/auth/login",
         { email, password },
         { withCredentials: true }
-      );
+      )
 
-      console.log(result);
+      console.log(result)
 
       if (result.data.success) {
         MySwal.fire({
@@ -57,12 +55,10 @@ const LoginPage = () => {
           text: result.data.message,
           icon: "success",
           confirmButtonText: "Cool!",
-        });
+        })
         setTimeout(() => {
-          window.location.href = `${
-            import.meta.env.VITE_STUDENT_DASHBOARD_URL
-          }`;
-        }, 3000);
+          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
+        }, 3000)
       }
     } catch (error) {
       MySwal.fire({
@@ -70,10 +66,10 @@ const LoginPage = () => {
         text: "Invalid Credintials, please cross check your data",
         icon: "error",
         confirmButtonText: "Okay",
-      });
-      console.error("Axios Error:", error.response?.data || error.message);
+      })
+      console.error("Axios Error:", error.response?.data || error.message)
     }
-  };
+  }
 
   // if (checking) return null
 
@@ -136,7 +132,7 @@ const LoginPage = () => {
               <div className="absolute bottom-0 left-1/2 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 ease-in-out transform -translate-x-1/2 w-0"></div>
             </div>
 
-             <div className="relative mb-6">
+            <div className="relative mb-6">
               <input
                 type="password"
                 id="password"
@@ -232,7 +228,7 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage
