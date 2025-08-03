@@ -200,7 +200,7 @@ const Header = () => {
 
           {/* Mobile Drawer */}
           <div
-            className={`fixed z-50 top-0 right-0 h-screen overflow-auto lg:hidden w-8/12 bg-gradient-to-b from-[#0B254C] via-[#348fd1] to-[#072043]  shadow-lg transition-transform duration-500 ease-in-out transform ${
+            className={`fixed z-50 top-0 right-0 h-screen pb-10 overflow-auto lg:hidden w-8/12 bg-gradient-to-b from-[#0B254C] via-[#348fd1] to-[#072043]  shadow-lg transition-transform duration-500 ease-in-out transform ${
               isOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
