@@ -14,13 +14,13 @@ export default function HelplineButton() {
         className={`flex flex-col items-center justify-center space-y-2 transition-all duration-200 ${open ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none -translate-y-2"
           }`}
       >
-        <a href="tel:+1234567890" className="bg-green-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
+        <a href="tel:+8801867101740" className="bg-green-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
           <Phone className="w-5 h-5" />
         </a>
         <a href="mailto:support@example.com" className="bg-blue-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
           <Mail className="w-5 h-5" />
         </a>
-        <a href="https://m.me/yourpage" target="_blank" className="bg-indigo-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
+        <a href="https://m.me/lifeline.itti?hash=(null)&source_id=8585216" target="_blank" className="bg-indigo-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
           <MessageCircle className="w-5 h-5" />
         </a>
       </div>

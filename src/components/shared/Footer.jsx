@@ -122,13 +122,32 @@ const Footer = () => {
 
       {/* Social Icons */}
       <div className="mt-8 flex flex-wrap items-center gap-4 justify-center">
-        <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
-        <SocialIcon icon={<FaFacebookF />} color="#3b5998" />
-        <SocialIcon icon={<FaYoutube />} color="#FF0000" />
-        {/* <SocialIcon icon={<FaInstagram />} color="#C13584" /> */}
+        <a href="http://wa.me/8801867101740" target="_blank">
+          <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
+        </a>
+        <a href="https://www.facebook.com/lifeline.itti" target="_blank">
+          {" "}
+          <SocialIcon icon={<FaFacebookF />} color="#3b5998" />
+        </a>
+        <a href="https://youtube.com/@lifelineitinstitute?si=O1ajnzSt_KyZ-WII" target="_blank">
+          <SocialIcon icon={<FaYoutube />} color="#FF0000" />
+        </a>
+        <a
+          href="https://www.instagram.com/lifelineitt.institute?igsh=MjE1NGRwc25vMXcx&utm_source=qr"
+          target="_blank"
+        >
+          <SocialIcon icon={<FaInstagram />} color="#C13584" />
+        </a>
         {/* <SocialIcon icon={<FaTiktok />} color="#000000" /> */}
-        <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
-        <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
+        <a href="https://t.me/lifelineitsupport" target="_blank">
+          <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/lifeline-it-training-institute-1896aa377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+          target="_blank"
+        >
+          <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
+        </a>
       </div>
 
       {/* Bottom Pay With */}
