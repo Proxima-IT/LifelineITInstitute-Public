@@ -69,7 +69,7 @@ const AboutPage = () => {
 
       <LazyLoadWrapper>
         <div className="mt-14 w-11/12 mx-auto flex flex-col-reverse lg:flex-row gap-10">
-          <div className="flex flex-col w-1/2 text-accent items-start gap-5 text-left">
+          <div className="flex flex-col lg:w-1/2 text-accent items-start gap-5 text-left">
             <button className="rounded-full  bg-gold/50 px-5 py-1.5 border border-gold">
               HOW WE WORK
             </button>
@@ -91,15 +91,15 @@ const AboutPage = () => {
             </Link>
           </div>
 
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <img src={vision} alt="" className="rounded-xl " />
           </div>
         </div>
       </LazyLoadWrapper>
 
       <LazyLoadWrapper>
-        <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-8">
+        <section className="bg-accent py-12 px-4 md:px-8 w-11/12 lg:w-9/12 mx-auto rounded-sm my-8">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row lg:items-start items-center gap-8">
             {/* Owner Image */}
             <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">
               <img
@@ -139,7 +139,7 @@ const AboutPage = () => {
               </p>
 
               {/* Social Icons */}
-              <div className="mt-8 flex flex-wrap items-center gap-4 justify-start">
+              <div className="mt-8 flex flex-wrap items-center gap-3 justify-start">
                 <a href="http://wa.me/8801867101740" target="_blank">
                   <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
                 </a>
@@ -319,12 +319,12 @@ const AboutPage = () => {
       </LazyLoadWrapper>
 
       <LazyLoadWrapper>
-        <div className="mt-10 w-9/12 mx-auto text-white flex items-center justify-between">
-          <div className="flex gap-4 text-2xl">
+        <div className="mt-10 w-10/12 mx-auto text-white gap-3 flex flex-col items-start md:flex-row lg:items-center justify-between">
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
             <h1 className="font-bold">Trade License No: </h1>
             <p>TRAD/CHTG/000307/2025</p>
           </div>
-          <div className="flex gap-4 text-2xl">
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
             <h1 className="font-bold">TIN No: </h1>
             <p>416683735934</p>
           </div>
