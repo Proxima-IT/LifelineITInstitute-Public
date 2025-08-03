@@ -32,7 +32,7 @@ export default function HelplineButton() {
       {/* Main Help Button */}
       <button
         onMouseEnter={() => setOpen(true)}
-        className="shadow-lg transition-all w-16 rounded-full"
+        className="shadow-lg transition-all w-12 lg:w-16 rounded-full"
       >
         {/* <HelpCircle className="w-6 h-6" /> */}
         <img src={chat} alt=""  />

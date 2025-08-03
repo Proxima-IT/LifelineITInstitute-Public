@@ -24,7 +24,7 @@ const ScrollToTop = () => {
           onClick={handleClick}
           className="p-2 animate-pulse  rounded-full bg-[#b96c16] text-white shadow-2xl shadow-blue-400 hover:bg-amber-700 transition-all"
         >
-          <ArrowUp className="w-8 h-8" />
+          <ArrowUp className="w-6 h-6 lg:w-8 lg:h-8" />
         </button>
       )}
     </div>
