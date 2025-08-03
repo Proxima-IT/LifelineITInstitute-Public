@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { Checkbox } from "@mui/material"
-import axios from "axios"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Checkbox } from "@mui/material";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 const RegisterPage = () => {
-  const [checking, setChecking] = useState(true)
-  const navigate = useNavigate()
+  const [checking, setChecking] = useState(true);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   // Checks if user already logged in
   useEffect(() => {
@@ -16,50 +18,50 @@ const RegisterPage = () => {
         const result = await axios.get(
           import.meta.env.VITE_API_URL + "/api/auth/check",
           { withCredentials: true }
-        )
+        );
 
         if (result.data.status) {
-          window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`
+          window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
         } else {
-          setChecking(false)
-          console.log("Okay, not logged in")
+          setChecking(false);
+          console.log("Okay, not logged in");
         }
       } catch (err) {
-        console.error("Error while checking login status:", err)
+        console.error("Error while checking login status:", err);
       }
-    }
+    };
 
-    checkLogin()
-  }, [navigate])
+    checkLogin();
+  }, [navigate]);
 
   const handleRegister = async (e) => {
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const name = form.name.value
-    const phone = form.phone.value
-    const password = form.password.value
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const phone = form.phone.value;
+    const password = form.password.value;
 
     const registerInfo = {
       name,
       email,
       phone,
       password,
-    }
+    };
 
-    localStorage.setItem("RegisterInfo", JSON.stringify(registerInfo))
-    console.log(email)
+    localStorage.setItem("RegisterInfo", JSON.stringify(registerInfo));
+    console.log(email);
 
-    const MySwal = withReactContent(Swal)
+    const MySwal = withReactContent(Swal);
 
     try {
       const result = await axios.post(
         import.meta.env.VITE_API_URL + "/api/auth/otp-verify",
         { email },
         { withCredentials: true }
-      )
+      );
 
-      if (result.data) navigate("/otppage")
+      if (result.data) navigate("/otppage");
     } catch (error) {
       MySwal.fire({
         title: "Oops!",
@@ -68,10 +70,10 @@ const RegisterPage = () => {
           "Invalid credentials, please try again.",
         icon: "warning",
         confirmButtonText: "Oops!",
-      })
-      console.error("Axios Error:", error.response?.data || error.message)
+      });
+      console.error("Axios Error:", error.response?.data || error.message);
     }
-  }
+  };
 
   // if (checking) return null
 
@@ -234,7 +236,7 @@ const RegisterPage = () => {
 
             <div className="relative mb-6">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder=" "
@@ -255,6 +257,14 @@ const RegisterPage = () => {
                     hover:border-gray-400
                 "
               />
+              <span
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+                className="absolute right-4 top-[30px]"
+              >
+                {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+              </span>
 
               <label
                 htmlFor="password"
@@ -300,7 +310,7 @@ const RegisterPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
