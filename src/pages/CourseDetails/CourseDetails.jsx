@@ -32,7 +32,7 @@ const CourseDetails = () => {
     <div className="mt-10 w-11/12 text-left mx-auto">
       <div className=" grid grid-cols-1 lg:grid-cols-3 justify-between gap-8">
         <div className="space-y-6 col-span-2">
-          <h1 className="lg:text-6xl text-accent font-bold">
+          <h1 className="lg:text-5xl text-accent font-bold">
             {courseDetails?.title}
           </h1>
 
@@ -47,7 +47,7 @@ const CourseDetails = () => {
         </div>
 
         <div className="bg-accent rounded-md shadow-md flex flex-col h-full  border-2 border-gold p-4 space-y-6 ">
-          <div className="relative flex items-center justify-center w-full">
+          <div className="relative flex items-center justify-center w-full mx-auto">
             {/* Video Thumbnail */}
             <div
               className="relative cursor-pointer"
