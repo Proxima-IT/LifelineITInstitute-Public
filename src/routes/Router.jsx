@@ -13,10 +13,11 @@ import SuccessStory from "@/pages/SuccessStory/SuccessStory"
 import StudentReview from "@/pages/StudentReview/StudentReview"
 import CertificateVerify from "@/pages/CertificateVerify/CertificateVerify"
 import CourseDetails from "@/pages/CourseDetails/CourseDetails"
-import ErrorPage from "@/pages/Error/ErrorPage"
+
 import PrivacyPolicy from "@/pages/General/PrivacyPolicy"
 import Terms from "@/pages/General/Terms"
 import Refund from "@/pages/General/Refund"
+import ErrorPage from "@/pages/Error/ErrorPage"
 
 const Router = createBrowserRouter([
   {
@@ -84,9 +85,12 @@ const Router = createBrowserRouter([
         path: "/refund",
         element: <Refund></Refund>,
       },
-    ],
-    
+    ],    
   },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>
+  }
 ])
 
 export default Router

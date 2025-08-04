@@ -79,7 +79,7 @@ const LoginPage = () => {
   } catch (error) {
     MySwal.fire({
       title: "Oops!",
-      text: "Invalid Credentials, please cross check your data",
+      text: "The email or password you entered doesn’t match our records. Please try again",
       icon: "error",
       confirmButtonText: "Okay",
     });

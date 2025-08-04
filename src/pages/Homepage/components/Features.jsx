@@ -105,7 +105,7 @@ const Features = () => {
             {/* Card 4 */}
             <div className="relative flex flex-col items-center border-[3px] border-[#9fe8ff] shadow-lg shadow-gray-900 justify-center text-center bg-white rounded-xl hover:scale-105 transition-all duration-500 cursor-pointer p-4 ">
               {/* <ShieldCheck size={48} className=" mb-4" /> */}
-              <img src={freelancing} alt="" className="w-[35%] mb-3" />
+              <img src={freelancing} alt="" className="w-[33%] mb-3" />
               <h3 className="text-2xl font-bold text-black  ">
                 Internship & Freelancing Guidance
               </h3>
@@ -134,7 +134,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data?.studentInfo.totalStudents}
+                    end={data? data.studentInfo.totalStudents:25000}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -153,7 +153,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data?.studentInfo.successCount}
+                    end={data? data.studentInfo.successCount:22000}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -172,7 +172,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data?.studentInfo.courseCompletors}
+                    end={data? data.studentInfo.courseCompletors:21500}
                     duration={2.5}
                     separator=","
                     start={0}

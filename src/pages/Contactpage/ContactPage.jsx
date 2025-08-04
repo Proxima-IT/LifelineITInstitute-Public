@@ -30,12 +30,14 @@ const ContactPage = () => {
                 Call or <span className="text-green-600">Whatsapp</span>
               </h3>
               <p className="mt-2">
-                {data?.contactInfo.map((contact) => (
-                  <div>
-                    <strong>{contact.number}</strong>{" "}
-                    <span>({contact.time})</span>
-                  </div>
-                ))}
+                { 
+                  data?.contactInfo.map((contact, index) => (
+                    <div key={index}>
+                      <strong>{contact.number}</strong>{" "}
+                      <span>({contact.time })</span>
+                    </div>
+                  ))
+                }
 
                 {/* <br />
                 <strong>01867 101740</strong> (9 AM to 11 PM) */}
