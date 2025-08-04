@@ -9,9 +9,12 @@ import support from "../../../assets/lIFETIME SUPPORT.png";
 
 import CountUp from "react-countup";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
+import { getAdminPanelData } from "@/hooks/getAdminPanelData";
 const Features = () => {
   const [startCount, setStartCount] = useState(false);
   const countRef = useRef(null);
+  const { data, isLoading, isError, error } = getAdminPanelData();
+  console.log(data?.studentInfo.totalStudents);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,7 +67,7 @@ const Features = () => {
               <div className="absolute  md:-top-11 lg:-top-16 w-4 h-4 hidden md:block rounded-full bg-white border-4 border-[#6C93B7]"></div>
 
               {/* <BookOpen size={48} className=" mb-4" /> */}
-              <img src={live} alt="" />         
+              <img src={live} alt="" />
             </div>
 
             {/* Card 2 */}
@@ -128,13 +131,10 @@ const Features = () => {
           <div className="mt-8 p-8 text-center grid grid-cols-1 md:grid-cols-3 gap-8 rounded-xl w-full shadow-lg shadow-gray-900 bg-gradient-to-b from-[#b97b18] via-[#c38925] to-[#bc7a0f]">
             {/* 1  */}
             <div>
-              <h3
-                ref={countRef}
-                className="text-4xl font-bold text-white mb-3"
-              >
+              <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={25000}
+                    end={data?.studentInfo.totalStudents}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -143,18 +143,17 @@ const Features = () => {
                 <span>+</span>
               </h3>
               <h1 className="font-bold text-2xl mb-1">Total Students</h1>
-              <p className="font-semibold text-base leading-5">Our community is growing with thousands of passionate learners.</p>
+              <p className="font-semibold text-base leading-5">
+                Our community is growing with thousands of passionate learners.
+              </p>
             </div>
 
             {/* 2  */}
             <div>
-              <h3
-                ref={countRef}
-                className="text-4xl font-bold text-white mb-3"
-              >
+              <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={22000}
+                    end={data?.studentInfo.successCount}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -163,17 +162,17 @@ const Features = () => {
                 <span>+</span>
               </h3>
               <h1 className="font-bold text-2xl mb-1">Successful Learners</h1>
-              <p className="font-semibold text-base leading-5">Gained skills, secured jobs, or advanced their careers through our training.</p>
+              <p className="font-semibold text-base leading-5">
+                Gained skills, secured jobs, or advanced their careers through
+                our training.
+              </p>
             </div>
             {/* 3 */}
-            <div >
-              <h3
-                ref={countRef}
-                className="text-4xl font-bold text-white mb-3"
-              >
+            <div>
+              <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={21500}
+                    end={data?.studentInfo.courseCompletors}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -182,7 +181,9 @@ const Features = () => {
                 <span>+</span>
               </h3>
               <h1 className="font-bold text-2xl mb-1"> Course Completions</h1>
-              <p className="font-semibold text-base leading-5">Officially completed and verified through our platform.</p>
+              <p className="font-semibold text-base leading-5">
+                Officially completed and verified through our platform.
+              </p>
             </div>
           </div>
         </div>

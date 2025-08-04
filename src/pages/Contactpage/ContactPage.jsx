@@ -3,8 +3,11 @@ import { FaFacebookF, FaMapMarkerAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import hotline from "../../assets/Hotline.png";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
+import { getAdminPanelData } from "@/hooks/getAdminPanelData";
 
 const ContactPage = () => {
+  const { data, isLoading, isError, error } = getAdminPanelData();
+  console.log(data?.contactInfo);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6">
       <section className="w-11/12 mx-auto py-8 text-center">
@@ -27,11 +30,15 @@ const ContactPage = () => {
                 Call or <span className="text-green-600">Whatsapp</span>
               </h3>
               <p className="mt-2">
-                <strong>01887 893100</strong> (6 AM to 12 PM)
-                <br />
-                <strong>01625 960594</strong> (9 AM to 11 PM)
-                <br />
-                <strong>01867 101740</strong> (9 AM to 11 PM)
+                {data?.contactInfo.map((contact) => (
+                  <div>
+                    <strong>{contact.number}</strong>{" "}
+                    <span>({contact.time})</span>
+                  </div>
+                ))}
+
+                {/* <br />
+                <strong>01867 101740</strong> (9 AM to 11 PM) */}
               </p>
             </div>
 

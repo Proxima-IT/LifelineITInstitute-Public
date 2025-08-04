@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react"
-import "../../Footer.css"
-import { Link, useNavigate } from "react-router-dom"
-import { Checkbox } from "@mui/material"
-import axios from "axios"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
+import React, { useEffect, useState } from "react";
+import "../../Footer.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Checkbox } from "@mui/material";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 const LoginPage = () => {
-  const [checking, setChecking] = useState(true)
-  const navigate = useNavigate()
+  const [checking, setChecking] = useState(true);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   // Checks if user already logged in
   useEffect(() => {
@@ -17,59 +19,74 @@ const LoginPage = () => {
         const result = await axios.get(
           import.meta.env.VITE_API_URL + "/api/auth/check",
           { withCredentials: true }
-        )
+        );
 
         if (result.data.status) {
           // window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
-          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
+          window.location.href = `${
+            import.meta.env.VITE_STUDENT_DASHBOARD_URL
+          }`;
         } else {
-          setChecking(false)
-          console.log("Okay, not logged in")
+          setChecking(false);
+          console.log("Okay, not logged in");
         }
       } catch (err) {
-        console.error("Error while checking login status:", err)
+        console.error("Error while checking login status:", err);
       }
-    }
+    };
 
-    checkLogin()
-  }, [navigate])
+    checkLogin();
+  }, [navigate]);
 
-  const handleLogin = async (e) => {
-    const MySwal = withReactContent(Swal)
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const password = form.password.value
-    try {
-      const result = await axios.post(
-        import.meta.env.VITE_API_URL + "/api/auth/login",
-        { email, password },
-        { withCredentials: true }
-      )
+ const handleLogin = async (e) => {
+  const MySwal = withReactContent(Swal);
+  e.preventDefault();
+  const form = e.target;
+  const email = form.email.value;
+  const password = form.password.value;
 
-      console.log(result)
+  try {
+    const result = await axios.post(
+      import.meta.env.VITE_API_URL + "/api/auth/login",
+      { email, password },
+      { withCredentials: true }
+    );
 
-      if (result.data.success) {
-        MySwal.fire({
-          title: `Welcome Back, ${result.data.name}`,
-          text: result.data.message,
-          icon: "success",
-          confirmButtonText: "Cool!",
-        })
-        setTimeout(() => {
-          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
-        }, 3000)
-      }
-    } catch (error) {
+    console.log(result);
+
+    if (result.data.success) {
+      const userName = result.data.name;
+      const userRole = result.data.role;
+
       MySwal.fire({
-        title: "Oops!",
-        text: "Invalid Credintials, please cross check your data",
-        icon: "error",
-        confirmButtonText: "Okay",
-      })
-      console.error("Axios Error:", error.response?.data || error.message)
+        title: `Welcome Back, ${userName}`,
+        text: result.data.message,
+        icon: "success",
+        confirmButtonText: "Cool!",
+      });
+
+      setTimeout(() => {
+        if (userRole === "admin") {
+          window.location.href = import.meta.env.VITE_ADMIN_DASHBOARD_URL;
+        } else if (userRole === "student") {
+          window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL;
+        } else {
+          // Optional: unknown role fallback
+          window.location.href = "/";
+        }
+      }, 3000);
     }
+  } catch (error) {
+    MySwal.fire({
+      title: "Oops!",
+      text: "Invalid Credentials, please cross check your data",
+      icon: "error",
+      confirmButtonText: "Okay",
+    });
+    console.error("Axios Error:", error.response?.data || error.message);
   }
+};
+
 
   // if (checking) return null
 
@@ -113,7 +130,7 @@ const LoginPage = () => {
                     top-1/2 -translate-y-1/2 text-base
                     peer-placeholder-shown:top-1/2
                     peer-placeholder-shown:text-base
-                    peer-focus:top-2
+                    peer-focus:top-2                    
                     peer-focus:text-sm
                     peer-focus:font-medium
                     peer-focus:text-blue-600
@@ -134,7 +151,7 @@ const LoginPage = () => {
 
             <div className="relative mb-6">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 placeholder=" "
@@ -155,6 +172,14 @@ const LoginPage = () => {
                     hover:border-gray-400
                 "
               />
+              <span
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+                className="absolute right-4 top-[30px]"
+              >
+                {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+              </span>
 
               <label
                 htmlFor="password"
@@ -222,13 +247,13 @@ const LoginPage = () => {
               to="/register"
               className="text-blue-600 font-semibold no-underline hover:underline ml-2"
             >
-              Signup
+              Sign up
             </Link>
           </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

@@ -69,7 +69,7 @@ const AboutPage = () => {
 
       <LazyLoadWrapper>
         <div className="mt-14 w-11/12 mx-auto flex flex-col-reverse lg:flex-row gap-10">
-          <div className="flex flex-col w-1/2 text-accent items-start gap-5 text-left">
+          <div className="flex flex-col lg:w-1/2 text-accent items-start gap-5 text-left">
             <button className="rounded-full  bg-gold/50 px-5 py-1.5 border border-gold">
               HOW WE WORK
             </button>
@@ -91,15 +91,15 @@ const AboutPage = () => {
             </Link>
           </div>
 
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <img src={vision} alt="" className="rounded-xl " />
           </div>
         </div>
       </LazyLoadWrapper>
 
       <LazyLoadWrapper>
-        <section className="bg-accent py-12 px-4 md:px-8 w-10/12 mx-auto rounded-sm my-8">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-8">
+        <section className="bg-accent py-12 px-4 md:px-8 w-11/12 lg:w-9/12 mx-auto rounded-sm my-8">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row lg:items-start items-center gap-8">
             {/* Owner Image */}
             <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg">
               <img
@@ -125,11 +125,10 @@ const AboutPage = () => {
                 ample opportunities for skill development and employment.
               </p>
 
-              <h1  className="mt-3 text-lg font-semibold text-primary">
+              <h1 className="mt-3 text-lg font-semibold text-primary">
                 Message to Students:
               </h1>
 
-              
               {/* to point at faq section properly  */}
               <div id="faq"></div>
 
@@ -138,21 +137,41 @@ const AboutPage = () => {
                 reputable IT institute. Together, we can build a stronger future
                 for you and the nation.”
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4 justify-start">
-                <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
-                <SocialIcon
-                  icon={<FaFacebookF />}
-                  color="#3b5998"
-                  link="https://www.facebook.com/lifeline.itti/"
-                />
-                <SocialIcon
-                  icon={<FaYoutube />}
-                  color="#FF0000"
-                  link="https://www.youtube.com/@LifelineITInstitute"
-                />
 
-                <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
-                <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
+              {/* Social Icons */}
+              <div className="mt-8 flex flex-wrap items-center gap-3 justify-start">
+                <a href="http://wa.me/8801867101740" target="_blank">
+                  <SocialIcon icon={<FaWhatsapp />} color="#25D366" />
+                </a>
+                <a
+                  href="https://www.facebook.com/lifeline.itti"
+                  target="_blank"
+                >
+                  {" "}
+                  <SocialIcon icon={<FaFacebookF />} color="#3b5998" />
+                </a>
+                <a
+                  href="https://youtube.com/@lifelineitinstitute?si=O1ajnzSt_KyZ-WII"
+                  target="_blank"
+                >
+                  <SocialIcon icon={<FaYoutube />} color="#FF0000" />
+                </a>
+                <a
+                  href="https://www.instagram.com/lifelineitt.institute?igsh=MjE1NGRwc25vMXcx&utm_source=qr"
+                  target="_blank"
+                >
+                  <SocialIcon icon={<FaInstagram />} color="#C13584" />
+                </a>
+                {/* <SocialIcon icon={<FaTiktok />} color="#000000" /> */}
+                <a href="https://t.me/lifelineitsupport" target="_blank">
+                  <SocialIcon icon={<FaTelegramPlane />} color="#0088cc" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/lifeline-it-training-institute-1896aa377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  target="_blank"
+                >
+                  <SocialIcon icon={<FaLinkedinIn />} color="#0077b5" />
+                </a>
               </div>
             </div>
           </div>
@@ -300,12 +319,12 @@ const AboutPage = () => {
       </LazyLoadWrapper>
 
       <LazyLoadWrapper>
-        <div className="mt-10 w-9/12 mx-auto text-white flex items-center justify-between">
-          <div className="flex gap-4 text-2xl">
+        <div className="mt-10 w-10/12 mx-auto text-white gap-3 flex flex-col items-start md:flex-row lg:items-center justify-between">
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
             <h1 className="font-bold">Trade License No: </h1>
             <p>TRAD/CHTG/000307/2025</p>
           </div>
-          <div className="flex gap-4 text-2xl">
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
             <h1 className="font-bold">TIN No: </h1>
             <p>416683735934</p>
           </div>
@@ -317,9 +336,8 @@ const AboutPage = () => {
 
 const SocialIcon = ({ icon, color, link }) => {
   return (
-    <Link
-      to={link}
-      target="_blank"
+    <div
+     
       className="w-9 h-9 flex items-center justify-center rounded-full shadow-md transition-all duration-300 hover:scale-110 cursor-pointer"
       style={{
         backgroundColor: color,
@@ -327,7 +345,7 @@ const SocialIcon = ({ icon, color, link }) => {
       }}
     >
       <div className="text-white text-lg">{icon}</div>
-    </Link>
+    </div>
   );
 };
 

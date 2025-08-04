@@ -11,6 +11,7 @@ import "../../../App.css";
 import { IoMdClose } from "react-icons/io";
 import { Typewriter } from "react-simple-typewriter";
 import axios from "axios";
+import { getAdminPanelData } from "@/hooks/getAdminPanelData";
 const Hero = () => {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
@@ -23,33 +24,35 @@ const Hero = () => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/general`)
-      .then((res) => {
-        console.log(res.data);
-        // Assuming res.data.offer is boolean or something to decide offer
-        if (res.data) {
-          setOffer(true);
-          setBanner(res.data.bannerImage)
-        } else {
-          setOffer(false);
-        }
-      })
-      .catch((err) => {
-        console.error("Error fetching general data:", err);
-      });
-  }, []);
+  const { data, isLoading, isError, error } = getAdminPanelData();
+  console.log(data)
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/general`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       // Assuming res.data.offer is boolean or something to decide offer
+  //       if (res.data) {
+  //         setOffer(true);
+  //         setBanner(res.data.bannerImage)
+  //       } else {
+  //         setOffer(false);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error fetching general data:", err);
+  //     });
+  // }, []);
 
-  console.log(banner)
+  // console.log(banner)
 
   return (
     <div className=" space-y-10 mt-10">
-      {offer && (
+      {data?.bannerImage && (
         <div
           className={`bg-accent w-full mx-auto h-20 md:h-24 lg:h-36 relative ${close ? "hidden": "block"}`}
         >
-          <img src={banner} alt="" className="h-full w-full bg-cover " />
+          <img src={data.bannerImage} alt="" className="h-full w-full bg-cover " />
           <span
             onClick={() => setClose(!close)}
             className="text-black bg-white rounded-full p-1 font-bold text-xl absolute right-0 top-0 cursor-pointer"
@@ -86,7 +89,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-sm text-secondary ">
-            Lifeline IT is operated by a Govt. approved organization | Est. 18
+            Lifeline IT is a Govt. approved organization | Est. 18
             <sup>th</sup> August, 2021 | Over 25,000+ Students Trained | Trusted
             by 2.50 Lakh+ Followers on Social Media.
           </p>

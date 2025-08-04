@@ -31,7 +31,7 @@ const OnlineCourse = () => {
   return (
     <div>
       <div className="flex justify-center">
-        <h1 className="text-2xl font-bold bg-blue-900 rounded-full px-8 py-1.5 text-white">
+        <h1 className="text-2xl font-bold text-white rounded-full px-8 py-1.5 bg-[#e89b2e]">
           Offline Courses
         </h1>
       </div>
@@ -85,10 +85,10 @@ const OnlineCourse = () => {
                     </button>
                   </Link>
                   <div>
-                    <h2 className="text-gray-600 font-bold text-xl">
+                    <h2 className="text-gray-600 font-bold text-lg">
                       <del>৳ 1000</del>
                     </h2>
-                    <h2 className="text-gray-800 font-bold text-xl">
+                    <h2 className="text-gray-800 font-bold text-2xl">
                       ৳ {course.price}
                     </h2>
                   </div>
