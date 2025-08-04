@@ -13,41 +13,29 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false)
 
   // Checks if user already logged in
-  useEffect(() => {
-    const checkLogin = async () => {
-      try {
-        const result = await axios.get(
-          import.meta.env.VITE_API_URL + "/api/auth/check",
-          { withCredentials: true }
-        )
+useEffect(() => {
+  const checkLogin = async () => {
+    try {
+      const result = await axios.get(
+        import.meta.env.VITE_API_URL + "/api/auth/check",
+        { withCredentials: true }
+      );
 
-        if (result.data.status) {
-          // window.location.href = `${import.meta.env.VITE_DASHBOARD_PAGE}`;
-          window.location.href = `${import.meta.env.VITE_STUDENT_DASHBOARD_URL}`
-        } else {
-          setChecking(false)
-          console.log("Okay, not logged in")
-        }
-      } catch (err) {
-        console.error("Error while checking login status:", err)
+      if (result.data.status) {
+        window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL;
+      } else {
+        setChecking(false);
+        console.log("Okay, not logged in");
       }
+    } catch (err) {
+      console.error("Error while checking login status:", err);
+      // Optional: Show alert if needed
     }
-<<<<<<< HEAD
-  } catch (error) {
-    MySwal.fire({
-      title: "Oops!",
-      text: "The email or password you entered doesn’t match our records. Please try again",
-      icon: "error",
-      confirmButtonText: "Okay",
-    });
-    console.error("Axios Error:", error.response?.data || error.message);
-  }
-};
-=======
->>>>>>> 4d420b9624973370c6049a87ba8570f1a938df82
+  };
 
-    checkLogin()
-  }, [navigate])
+  checkLogin();
+}, []);
+
 
   const handleLogin = async (e) => {
     const MySwal = withReactContent(Swal)
@@ -90,7 +78,7 @@ const LoginPage = () => {
     } catch (error) {
       MySwal.fire({
         title: "Oops!",
-        text: "Invalid Credentials, please cross check your data",
+        text: "The email or password you entered doesn’t match our records. Please try again",
         icon: "error",
         confirmButtonText: "Okay",
       })
