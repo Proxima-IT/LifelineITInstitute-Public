@@ -3,4 +3,3 @@ npm run build
 git add .
 git commit -m "$message"
 git push
-echo -ne "\n\t ✅ Build \033[32mSuccessfully Done \033[0m"
