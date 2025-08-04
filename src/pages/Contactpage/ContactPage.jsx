@@ -33,7 +33,7 @@ const ContactPage = () => {
                 { 
                   data?.contactInfo.map((contact, index) => (
                     <div key={index}>
-                      <strong>{contact.number}</strong>{" "}
+                      <strong>{contact.number? contact.number : ""}</strong>{" "}
                       <span>({contact.time })</span>
                     </div>
                   ))

@@ -18,6 +18,7 @@ import PrivacyPolicy from "@/pages/General/PrivacyPolicy"
 import Terms from "@/pages/General/Terms"
 import Refund from "@/pages/General/Refund"
 import ErrorPage from "@/pages/Error/ErrorPage"
+import OurTeam from "@/pages/OurTeam/OurTeam"
 
 const Router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const Router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage></ContactPage>,
+      },
+      {
+        path: "/our-team",
+        element: <OurTeam></OurTeam>,
       },
       {
         path: "/login",

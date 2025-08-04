@@ -188,7 +188,7 @@ const Navbar = () => {
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild onClick={handleClick}>
                         <Link
-                          to="/"
+                          to="/our-team"
                           // onClick={handleLogout}
                           className="flex items-center gap-2 p-2 hover:bg-gray-100 transition-all duration-300 rounded-md w-full"
                         >
