@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import cerbg from "../../assets/cerbg.jpg";
 
 const RegisterPage = () => {
   const [checking, setChecking] = useState(true);
@@ -78,7 +79,10 @@ const RegisterPage = () => {
   // if (checking) return null
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4">
+    <div
+      className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url(${cerbg})` }}
+    >
       <div className="w-full max-w-[28rem]">
         <div className="bg-white rounded-[10px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] p-8 backdrop-blur-sm">
           <h1 className="text-[1.5rem] font-bold text-gray-800 mb-8 text-center">
