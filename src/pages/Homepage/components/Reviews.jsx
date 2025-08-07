@@ -76,7 +76,7 @@ const Reviews = () => {
                   <p className="text-gray-700 mb-4">{review.ReviewText}</p>
 
                   {/* Hardcoded rating stars */}
-                  <div className="flex space-x-1 text-yellow-400">
+                  <div className="flex space-x-1 text-[#ffa800]">
                     <FaStar />
                     <FaStar />
                     <FaStar />

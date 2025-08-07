@@ -80,7 +80,7 @@ const Features = () => {
               <h3 className="text-2xl font-bold text-black my-1">
                 Expert Instructors
               </h3>
-              <p className="mt-2 text-black font-semibold text-lg">
+              <p className="mt-2 text-black font-semibold text-lg leading-[23px]">
                 Learn from Professionals with 5+ Years of Industry Experience.
               </p>
             </div>
@@ -95,7 +95,7 @@ const Features = () => {
               <h3 className="text-2xl font-bold text-[#3bb54a]  ">
                 Certified by NSDA
               </h3>
-              <p className="mt-2 text-black font-semibold text-lg">
+              <p className="mt-2 text-black font-semibold text-lg leading-[23px]">
                 We are a Government Approved Training Institute (NSDA
                 Certified).
               </p>
@@ -105,22 +105,22 @@ const Features = () => {
             {/* Card 4 */}
             <div className="relative flex flex-col items-center border-[3px] border-[#9fe8ff] shadow-lg shadow-gray-900 justify-center text-center bg-white rounded-xl hover:scale-105 transition-all duration-500 cursor-pointer p-4 ">
               {/* <ShieldCheck size={48} className=" mb-4" /> */}
-              <img src={freelancing} alt="" className="w-[33%] mb-3" />
+              <img src={freelancing} alt="" className="w-[30%] mb-3" />
               <h3 className="text-2xl font-bold text-black  ">
                 Internship & Freelancing Guidance
               </h3>
-              <p className="mt-2 text-black font-semibold text-lg">
+              <p className="mt-2 text-black font-semibold text-lg leading-[23px]">
                 Get guidance to start your freelance career or land a job.
               </p>
             </div>
             {/* Card 5 */}
             <div className="relative flex flex-col items-center border-[3px] border-[#9fe8ff] shadow-lg shadow-gray-900 justify-center text-center bg-white rounded-xl hover:scale-105 transition-all duration-500 cursor-pointer p-4 ">
               {/* <ShieldCheck size={48} className=" mb-4" /> */}
-              <img src={support} alt="" className="w-[45%] mb-3" />
+              <img src={support} alt="" className="w-[42%] mb-3" />
               <h3 className="text-2xl font-bold text-black  ">
                 Free Lifetime Support
               </h3>
-              <p className="mt-2 text-black font-semibold text-lg">
+              <p className="mt-2 text-black font-semibold text-lg leading-[23px]">
                 Only our students can get Lifetime Online Support & Course
                 Access into their User Dashboard.
               </p>
@@ -128,7 +128,7 @@ const Features = () => {
           </div>
 
           {/* total student counting  */}
-          <div className="mt-8 p-8 text-center grid grid-cols-1 md:grid-cols-3 gap-8 rounded-xl w-full shadow-lg shadow-gray-900 bg-gradient-to-b from-[#b97b18] via-[#c38925] to-[#bc7a0f]">
+          <div className="mt-8 p-8 text-center grid grid-cols-1 md:grid-cols-3 gap-8 rounded-xl w-full shadow-lg shadow-gray-900 bg-[#ff7d2f]">
             {/* 1  */}
             <div>
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">

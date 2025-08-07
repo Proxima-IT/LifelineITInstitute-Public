@@ -38,8 +38,8 @@ const AboutPage = () => {
       {/* our mission  */}
 
       <LazyLoadWrapper>
-        <div className="mt-14 w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2  gap-10">
-          <div className="">
+        <div className="md:mt-14 mt-8 w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2  gap-10">
+          <div className="hidden lg:block">
             <img src={mission} alt="" className="rounded-xl " />
           </div>
           <div className="flex flex-col items-start text-accent gap-5 text-left">
@@ -56,6 +56,11 @@ const AboutPage = () => {
               entrepreneurship. We are committed to reducing unemployment across
               the country.
             </p>
+
+            <div className="lg:hidden block">
+              <img src={mission} alt="" className="rounded-xl " />
+            </div>
+
             <Link to="https://www.youtube.com/@LifelineITInstitute">
               <button className="text-white text-center lg:px-[35px] px-[20px] py-[8px] lg:py-[10px] rounded-full shadow-[0_0_10px_#000_80%] bg-gradient-to-r from-[#f09619ee] via-[#e4d653] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center] block font-bold">
                 More About us
@@ -84,6 +89,10 @@ const AboutPage = () => {
               sustainable, tech-driven economy.
             </p>
 
+            <div className="lg:hidden block">
+              <img src={vision} alt="" className="rounded-xl " />
+            </div>
+
             <Link to="https://www.facebook.com/lifeline.itti">
               <button className="text-white text-center lg:px-[35px] px-[20px] py-[8px] lg:py-[10px] rounded-full shadow-[0_0_10px_#000_80%] bg-gradient-to-r from-[#f09619ee] via-[#e4d653] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center] block font-bold">
                 Learn More About us
@@ -91,7 +100,7 @@ const AboutPage = () => {
             </Link>
           </div>
 
-          <div className="lg:w-1/2">
+          <div className="hidden lg:block w-1/2">
             <img src={vision} alt="" className="rounded-xl " />
           </div>
         </div>
@@ -337,7 +346,6 @@ const AboutPage = () => {
 const SocialIcon = ({ icon, color, link }) => {
   return (
     <div
-     
       className="w-9 h-9 flex items-center justify-center rounded-full shadow-md transition-all duration-300 hover:scale-110 cursor-pointer"
       style={{
         backgroundColor: color,

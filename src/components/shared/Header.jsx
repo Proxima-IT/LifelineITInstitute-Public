@@ -16,6 +16,7 @@ import { IoMdClose } from "react-icons/io";
 import { HashLink } from "react-router-hash-link";
 
 import { useRef } from "react";
+import { GiGraduateCap } from "react-icons/gi";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +29,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const searchRef = useRef(null); // 👈 Add this
-
 
   useEffect(() => {
     const verifyLogin = async () => {
@@ -74,21 +74,19 @@ const Header = () => {
     setMobileSearchOpen(false); // close floating search if on mobile
   };
 
-
   useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (searchRef.current && !searchRef.current.contains(event.target)) {
-      setMobileSearchOpen(false); // 👈 Close search
-    }
-  };
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setMobileSearchOpen(false); // 👈 Close search
+      }
+    };
 
-  document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
-
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleClick = () => {
     // navigate("/our-courses");
@@ -98,7 +96,7 @@ const Header = () => {
   };
 
   return (
-    <div className="p-[10px] flex items-center justify-around sticky top-0 z-50 bg-[#0c2851] shadow">
+    <div className="p-[8px] flex items-center justify-around sticky top-0 z-50 bg-[#0c2851] shadow">
       {/* Logo */}
       <div className="lg:w-3/12">
         <Link to="/">
@@ -128,7 +126,10 @@ const Header = () => {
 
           {/* Floating Full-Width Search Bar */}
           {mobileSearchOpen && (
-            <div ref={searchRef} className="fixed transition-all duration-200 top-20 left-0 right-0 z-50 px-4 w-[80%] mx-auto">
+            <div
+              ref={searchRef}
+              className="fixed transition-all duration-200 top-20 left-0 right-0 z-50 px-4 w-[80%] mx-auto"
+            >
               <Paper
                 component="form"
                 onSubmit={handleSearch}
@@ -184,8 +185,14 @@ const Header = () => {
                 : "/login"
             }
           >
-            <button className="text-white text-sm lg:text-base text-center lg:px-[22px] px-[12px] py-[6px] lg:py-[11px] rounded-[10px] shadow-[0_0_10px_#000] bg-gradient-to-r from-[#f09619ee] via-[#d3c440] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center]  font-bold flex">
-              {isLoggedIn ? "🎓 Dashboard" : "Login"}
+            <button className="text-white text-sm lg:text-base text-center lg:px-[22px] px-[12px] py-[6px] lg:py-[11px] rounded-[10px] shadow-[0_0_10px_#000] bg-gradient-to-r from-[#f09619ee] via-[#d3c440] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center]  font-bold flex items-center gap-2">
+              {isLoggedIn ? (
+                <>
+                  <span className="text-xl"><GiGraduateCap /></span> Dashboard
+                </>
+              ) : (
+                "Login"
+              )}
             </button>
           </Link>
 
@@ -209,7 +216,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Nav Toggle */}
-          <div className="text-white text-lg lg:hidden" onClick={toggleNavbar}>
+          <div className="text-white text-2xl lg:hidden hover:text-blue-500" onClick={toggleNavbar}>
             <AiOutlineMenuFold />
           </div>
           {isOpen && (
@@ -253,81 +260,78 @@ const Header = () => {
                 <Link
                   onClick={handleClick}
                   to="/"
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Home
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/courses"
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Courses
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/certificate"
-                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Certificate Verify
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/success-story"
-                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Success Story
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/student-review"
-                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
                   Student Reviews
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/about"
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   About Us
                 </Link>
                 <Link
                   onClick={handleClick}
                   to="/contact"
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
                   Contact
                 </Link>
 
-               
                 <Link
                   to="/"
-                
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
-                   Join as a Mentor
+                  Join as a Mentor
                 </Link>
                 <Link
                   to="/"
-                 
-                   className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
+                  className="border border-[#9fe8ff] rounded-full px-3 py-2 text-gray-200 w-full"
                 >
-                   Our Team
+                  Our Team
                 </Link>
                 <Link
                   to="/"
                   // onClick={handleLogout}
                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
-                   Our Agency
+                  Our Agency
                 </Link>
 
                 <HashLink
                   to="/about#faq"
                   className="border border-[#9fe8ff] rounded-full px-4 py-2 text-gray-200 w-full"
                 >
-                   FAQ
+                  FAQ
                 </HashLink>
               </ul>
 
@@ -355,5 +359,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

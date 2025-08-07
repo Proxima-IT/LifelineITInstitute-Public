@@ -69,7 +69,7 @@ const OnlineCourse = () => {
                   <span>Total Class: {course.totalClasses}</span>
                 </div>
                 <div className="text-left">
-                  <p className="flex space-x-1 text-yellow-600">
+                  <p className="flex space-x-1 text-[#ffa800]">
                     <FaStar />
                     <FaStar />
                     <FaStar />
