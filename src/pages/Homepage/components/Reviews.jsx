@@ -59,7 +59,7 @@ const Reviews = () => {
               {reviews.map((review) => (
                 <div
                   key={review.length}
-                  className="max-w-md bg-white shadow-lg rounded-lg p-6 mx-3"
+                  className="max-w-md bg-white shadow-lg rounded-lg p-6 mx-3 text-left"
                 >
                   <div className="flex items-center mb-4">
                     <img

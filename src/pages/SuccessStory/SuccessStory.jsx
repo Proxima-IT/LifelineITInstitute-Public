@@ -162,7 +162,7 @@ const SuccessStory = () => {
                   <img
                     src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                     alt={video.title}
-                    className="w-full h-48 object-cover rounded-lg shadow"
+                    className="w-full h-56 object-cover rounded-lg shadow"
                   />
                   {/* Play button overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition">

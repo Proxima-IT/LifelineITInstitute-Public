@@ -114,3 +114,16 @@ p {
 .animate-shine {
   animation: shine 1s ease-in-out forwards;
 }
+
+
+.blinking-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

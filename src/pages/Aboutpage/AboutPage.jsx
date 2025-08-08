@@ -187,6 +187,20 @@ const AboutPage = () => {
         </section>
       </LazyLoadWrapper>
 
+      {/* trade lisence no  */}
+      <LazyLoadWrapper>
+        <div className="mt-10 w-9/12 mx-auto text-white gap-3 flex flex-col items-start md:flex-row lg:items-center justify-between">
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
+            <h1 className="font-bold">Trade License No: </h1>
+            <p>TRAD/CHTG/000307/2025</p>
+          </div>
+          <div className="flex items-center gap-3 text-xs lg:text-2xl">
+            <h1 className="font-bold">TIN No: </h1>
+            <p>416683735934</p>
+          </div>
+        </div>
+      </LazyLoadWrapper>
+
       {/* FAQ  */}
 
       <LazyLoadWrapper>
@@ -325,19 +339,6 @@ const AboutPage = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-      </LazyLoadWrapper>
-
-      <LazyLoadWrapper>
-        <div className="mt-10 w-10/12 mx-auto text-white gap-3 flex flex-col items-start md:flex-row lg:items-center justify-between">
-          <div className="flex items-center gap-3 text-xs lg:text-2xl">
-            <h1 className="font-bold">Trade License No: </h1>
-            <p>TRAD/CHTG/000307/2025</p>
-          </div>
-          <div className="flex items-center gap-3 text-xs lg:text-2xl">
-            <h1 className="font-bold">TIN No: </h1>
-            <p>416683735934</p>
-          </div>
-        </div>
       </LazyLoadWrapper>
     </div>
   );
