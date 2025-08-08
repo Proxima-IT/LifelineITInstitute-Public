@@ -238,7 +238,7 @@ useEffect(() => {
 
             <input
               type="submit"
-              className="inline-block w-full mt-1.5 text-[var(--login-color-secondary)] py-2 text-base tracking-wider cursor-pointer bg-transparent border border-[var(--login-color-secondary)] rounded-[30px] shadow-[inset_0_0_0_0_var(--login-color-secondary)] transition duration-200 hover:text-white hover:shadow-[inset_500px_0_0_0_var(--login-color-primary)]"
+              className="inline-block font-bold w-full mt-1.5 text-[var(--login-color-secondary)] py-2 text-base tracking-wider cursor-pointer bg-transparent border border-[var(--login-color-secondary)] rounded-[30px] shadow-[inset_0_0_0_0_var(--login-color-secondary)] transition duration-200 hover:text-white hover:shadow-[inset_500px_0_0_0_var(--login-color-primary)]"
               value="Login"
             />
           </form>
@@ -248,7 +248,7 @@ useEffect(() => {
               to="/register"
               className="text-blue-600 font-semibold no-underline hover:underline ml-2"
             >
-              Sign up
+              Sign Up
             </Link>
           </p>
         </div>
