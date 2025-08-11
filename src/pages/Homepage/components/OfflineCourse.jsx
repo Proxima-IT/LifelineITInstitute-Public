@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
+import { Rating } from "react-simple-star-rating";
 const OnlineCourse = () => {
   const handleClick = () => {
     // navigate("/our-courses");
@@ -69,12 +70,21 @@ const OnlineCourse = () => {
                   <span>Total Class: {course.totalClasses}</span>
                 </div>
                 <div className="text-left">
-                  <p className="flex space-x-1 text-[#ffa800]">
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
+                  <p className="flex space-x-1 text-[#ffa800] items-center">
+                    <Rating
+                      initialValue={course.starCount ? course.starCount : 5} // Default rating
+                      readonly // Only display
+                      allowFraction // Show half stars
+                      size={24} // Star size (px)
+                      fillColor="#ffa800" // Filled star color
+                      emptyColor="#d1d5db" // Empty star color (Tailwind gray-300)
+                      transition // Smooth animation
+                      SVGstyle={{ display: "inline-block" }} // Extra custom style
+                    />
+                    <span className="text-gray-700 ml-2">
+                      {" "}
+                      ({course.reviewCount ? course.reviewCount : "72"} Reviews)
+                    </span>
                   </p>
                 </div>
                 <div className="flex justify-between items-start">

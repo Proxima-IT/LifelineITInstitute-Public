@@ -4,6 +4,8 @@ import { FaArrowRight } from "react-icons/fa6";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
+import { Rating } from "react-simple-star-rating";
+
 const OnlineCourse = () => {
   const handleClick = () => {
     // navigate("/our-courses");
@@ -12,14 +14,13 @@ const OnlineCourse = () => {
     }, 100); // delay to ensure page loads
   };
 
-  const [data, setData] = useState([]);
-  // const [typeName, setTypeName] = useState("online");
+  const [courseData, setCourseData] = useState([]);
 
   let getLatestCourses = async () => {
     const result = await axios.get(
       import.meta.env.VITE_API_URL + `/api/courses/search?limit=3&name=online`
     );
-    setData(result.data);
+    setCourseData(result.data);
     console.log(result.data);
   };
 
@@ -36,64 +37,73 @@ const OnlineCourse = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
-        {data.map((course) => (
+        {courseData.map((course) => (
           <LazyLoadWrapper>
             <div
-            key={course._id}
-            className="max-w-sm xl:max-w-lg h-full rounded-xl overflow-hidden shadow-md bg-white relative border border-[#f09619e2] hover:shadow-lg hover:scale-[1.02] transition duration-300 cursor-pointer flex flex-col justify-between"
-          >
-            {/* Gradient top border */}
-            <div className="h-2 bg-gradient-to-r from-[#F09819] via-[#EDDE5D] to-[#F09819]"></div>
-            {/* Course image */}
-            <img
-              src={course.thumbnail}
-              alt="Course"
-              className="w-full h-44 object-cover"
-            />
+              key={course._id}
+              className="max-w-sm xl:max-w-lg h-full rounded-xl overflow-hidden shadow-md bg-white relative border border-[#f09619e2] hover:shadow-lg hover:scale-[1.02] transition duration-300 cursor-pointer flex flex-col justify-between"
+            >
+              {/* Gradient top border */}
+              <div className="h-2 bg-gradient-to-r from-[#F09819] via-[#EDDE5D] to-[#F09819]"></div>
+              {/* Course image */}
+              <img
+                src={course.thumbnail}
+                alt="Course"
+                className="w-full h-44 object-cover"
+              />
 
-            <div className="p-5 space-y-3">
-              <small className="font-bold bg-[#225499] text-white rounded-full px-2 py-1">
-                {course.type == "online" ? "🟢 Online" : "🔴 Offline"}
-              </small>
-              <h2 className="text-xl font-semibold text-gray-800 group-hover:text-[#F09819] transition">
-                {course.title}
-              </h2>
-              <p className="text-gray-600 text-sm flex-grow">
-                {course.description}
-              </p>
-
-              {/* Extra info */}
-              <div className="flex justify-between text-sm text-gray-500 pt-2">
-                <span>Duration: {course.duration}</span>
-                <span>Total Class: {course.totalClasses}</span>
-              </div>
-              <div className="text-left">
-                <p className="flex space-x-1 text-[#ffa800]">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
+              <div className="p-5 space-y-3">
+                <small className="font-bold bg-[#225499] text-white rounded-full px-2 py-1">
+                  {course.type == "online" ? "🟢 Online" : "🔴 Offline"}
+                </small>
+                <h2 className="text-xl font-semibold text-gray-800 group-hover:text-[#F09819] transition">
+                  {course.title}
+                </h2>
+                <p className="text-gray-600 text-sm flex-grow">
+                  {course.description}
                 </p>
-              </div>
-              <div className="flex justify-between items-start">
-                {/* Button */}
-                <Link to={`/courses/${course.route}`}>
-                   <button className="m-2 px-[20px] py-[7px] lg:px-[30px] lg:py-[10px] text-center uppercase transition-all duration-500 bg-[linear-gradient(to_right,_#249ffd_2%,_#3a7bd5_58%,_#00d2ff_100%)] bg-[length:200%_auto] text-white shadow-[0_0_10px_#000_80%] rounded-full  hover:bg-[position:right_center] hover:text-white flex items-center gap-3 font-bold">
+
+                {/* Extra info */}
+                <div className="flex justify-between text-sm text-gray-500 pt-2">
+                  <span>Duration: {course.duration}</span>
+                  <span>Total Class: {course.totalClasses}</span>
+                </div>
+                <div className="text-left">
+                  <p className=" space-x-1 text-[#ffa800] flex items-center">
+                    <Rating
+                      initialValue={course.starCount ? course.starCount : 5} // Default rating
+                      readonly // Only display
+                      allowFraction // Show half stars
+                      size={24} // Star size (px)
+                      fillColor="#ffa800" // Filled star color
+                      emptyColor="#d1d5db" // Empty star color (Tailwind gray-300)
+                      transition // Smooth animation
+                      SVGstyle={{ display: "inline-block" }} // Extra custom style
+                    />
+                    <span className="text-gray-700 ml-2">
+                      {" "}
+                      ({course.reviewCount ? course.reviewCount : "72"} Reviews)
+                    </span>
+                  </p>
+                </div>
+                <div className="flex justify-between items-start">
+                  {/* Button */}
+                  <Link to={`/courses/${course.route}`}>
+                    <button className="m-2 px-[20px] py-[7px] lg:px-[30px] lg:py-[10px] text-center uppercase transition-all duration-500 bg-[linear-gradient(to_right,_#249ffd_2%,_#3a7bd5_58%,_#00d2ff_100%)] bg-[length:200%_auto] text-white shadow-[0_0_10px_#000_80%] rounded-full  hover:bg-[position:right_center] hover:text-white flex items-center gap-3 font-bold">
                       Enroll Now
                     </button>
-                </Link>
-                <div>
-                  <h2 className="text-gray-600 font-bold text-lg">
-                    <del>৳ 1000</del>
-                  </h2>
-                  <h2 className="text-gray-800 font-bold text-2xl">
-                    ৳ {course.price}
-                  </h2>
+                  </Link>
+                  <div>
+                    <h2 className="text-gray-600 font-bold text-lg">
+                      <del>৳ 1000</del>
+                    </h2>
+                    <h2 className="text-gray-800 font-bold text-2xl">
+                      ৳ {course.price}
+                    </h2>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </LazyLoadWrapper>
         ))}
       </div>
