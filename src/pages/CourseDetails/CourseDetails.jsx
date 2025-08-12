@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import {
@@ -10,13 +10,57 @@ import {
   FaTiktok,
   FaLinkedinIn,
   FaTelegramPlane,
+  FaArrowCircleRight,
 } from "react-icons/fa";
 import { Rating } from "react-simple-star-rating";
+import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
 
+const tabs = [
+  { id: "overview", label: "Overview" },
+  { id: "course", label: "Course Content" },
+  { id: "instructor", label: "Instructor" },
+  { id: "reviews", label: "Reviews" },
+  { id: "write", label: "Write a Review" },
+];
 const CourseDetails = () => {
   const { route } = useParams();
-
   const [courseDetails, setCourseDetails] = useState({});
+  const [activeTab, setActiveTab] = useState("overview");
+  const navbarHeight = 80;
+  const [courseData, setCourseData] = useState([]);
+  const modules = courseDetails?.modules;
+  console.log(modules);
+
+  let getLatestCourses = async () => {
+    const result = await axios.get(
+      import.meta.env.VITE_API_URL + `/api/courses/search?limit=3&name=online`
+    );
+    setCourseData(result.data);
+    console.log(result.data);
+  };
+
+  useEffect(() => {
+    getLatestCourses();
+  }, []);
+
+  // tab wise view
+  const sectionsRef = {
+    overview: useRef(null),
+    course: useRef(null),
+    instructor: useRef(null),
+    reviews: useRef(null),
+    write: useRef(null),
+  };
+
+  const handleScrollTo = (id) => {
+    setActiveTab(id);
+    const section = sectionsRef[id].current;
+    if (section) {
+      const top = section.offsetTop - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     axios
       .get(import.meta.env.VITE_API_URL + `/api/courses/${route}`)
@@ -39,10 +83,29 @@ const CourseDetails = () => {
   const instructors = courseDetails?.instructors;
   console.log(instructors);
 
+  // Update active tab on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      let current = "overview";
+      for (const tab of tabs) {
+        const section = sectionsRef[tab.id].current;
+        if (
+          section &&
+          window.scrollY >= section.offsetTop - navbarHeight - 50
+        ) {
+          current = tab.id;
+        }
+      }
+      setActiveTab(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="lg:mt-20 w-11/12 text-left mx-auto">
       <div className=" grid grid-cols-1 lg:grid-cols-3 justify-between gap-8">
-
         {/* course info  */}
         <div className="space-y-6 col-span-2">
           <h1 className="lg:text-5xl text-accent font-bold">
@@ -77,7 +140,7 @@ const CourseDetails = () => {
               Reviews
             </p>
             <p className="text-lg text-[#ffa800] ">
-              {courseDetails.enrolledStudents?.length}+ 
+              {courseDetails.enrolledStudents?.length}+
               <span className="font-bold ml-2">Students:</span>
             </p>
           </div>
@@ -214,33 +277,186 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-      <div>
-        <h1 className="font-bold text-xl text-white my-4">Instructor</h1>
 
-        {instructors?.map((instructor) => (
-          <div
-            key={instructor}
-            className="relative group w-full md:w-1/3 lg:w-1/4  bg-white p-4 rounded-2xl shadow-md text-center transition"
+      <div className="p-6">
+        {/* Tabs */}
+        <div className="flex gap-3 mb-6 overflow-x-auto">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleScrollTo(tab.id)}
+              className={`px-5 py-2 rounded-full transition ${
+                activeTab === tab.id
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-100 text-gray-800 hover:bg-blue-100 hover:text-blue-600"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Content Sections */}
+        <div className="space-y-2">
+          <section
+            ref={sectionsRef.overview}
+            className=" bg-gray-50 p-6 rounded-lg"
           >
-            {/* Profile Picture */}
-            <img
-              src={instructor.image}
-              alt="Instructor"
-              className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-blue-200 shadow"
-            />
+            <h2 className="text-xl font-semibold mb-10">Details</h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure
+              distinctio ad perspiciatis, rerum eligendi repudiandae similique
+              ipsa ipsum. Doloribus adipisci dolorum incidunt blanditiis vitae
+              magni placeat quod illum, officia rerum ipsa neque, sunt delectus
+              veritatis ipsam enim nesciunt modi molestiae! Ad reprehenderit
+              enim quaerat debitis molestiae corrupti, amet quae atque.
+            </p>
+          </section>
 
-            {/* Name & Designation */}
-            <h3 className="mt-4 text-lg font-semibold text-gray-800">
-              {instructor.name}
-            </h3>
-            <p className="text-sm text-gray-500">Frontend Mentor</p>
+          <section
+            ref={sectionsRef.course}
+            className=" bg-gray-50 p-6 rounded-lg"
+          >
+            <h2 className="text-xl font-semibold mb-2">Course Content</h2>
+            {modules.map((module) => (
+              <h1 className="font-bold mt-5 flex items-center gap-3">
+                <FaArrowCircleRight />
+                {module.title}
+              </h1>
+            ))}
+          </section>
 
-            {/* Floating Pop-up Below the Card */}
-            <div className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 w-60 bg-white text-gray-700 text-sm shadow-lg p-3 rounded-lg opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 z-20">
-              <p>{instructor.about}</p>
+          <section
+            ref={sectionsRef.instructor}
+            className=" bg-gray-50 p-6 rounded-lg"
+          >
+            <div>
+              <h1 className="font-semibold text-xl text-black my-4">
+                Instructor
+              </h1>
+
+              {instructors?.map((instructor) => (
+                <div
+                  key={instructor}
+                  className="relative group w-full md:w-1/3 lg:w-1/4  bg-white p-4 rounded-2xl shadow-md text-center transition"
+                >
+                  {/* Profile Picture */}
+                  <img
+                    src={instructor.image}
+                    alt="Instructor"
+                    className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-blue-200 shadow"
+                  />
+
+                  {/* Name & Designation */}
+                  <h3 className="mt-4 text-lg font-semibold text-gray-800">
+                    {instructor.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">Frontend Mentor</p>
+
+                  {/* Floating Pop-up Below the Card */}
+                  <div className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 w-60 bg-white text-gray-700 text-sm shadow-lg p-3 rounded-lg opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 z-20">
+                    <p>{instructor.about}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
+          </section>
+
+          <section
+            ref={sectionsRef.reviews}
+            className=" bg-gray-50 p-6 rounded-lg"
+          >
+            <h2 className="text-xl font-semibold mb-2">Recent Reviews</h2>
+            <p>Placeholder content for Reviews.</p>
+          </section>
+
+          <section
+            ref={sectionsRef.write}
+            className=" bg-gray-50 p-6 rounded-lg"
+          >
+            <h2 className="text-xl font-semibold mb-2">Write a Review</h2>
+            <p>Placeholder content for Write a Review.</p>
+          </section>
+        </div>
+
+        <h1 className="border border-white rounded-full text-center text-white px-3 py-1 mt-5 w-1/5">
+          More Similar Courses
+        </h1>
+        <h1 className="text-xl font-semibold my-5 text-white">
+          Related Courses
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+          {courseData.map((course) => (
+            <LazyLoadWrapper>
+              <div
+                key={course._id}
+                className="max-w-sm xl:max-w-lg h-full rounded-xl overflow-hidden shadow-md bg-white relative border border-[#f09619e2] hover:shadow-lg hover:scale-[1.02] transition duration-300 cursor-pointer flex flex-col justify-between"
+              >
+                {/* Gradient top border */}
+                <div className="h-2 bg-gradient-to-r from-[#F09819] via-[#EDDE5D] to-[#F09819]"></div>
+                {/* Course image */}
+                <img
+                  src={course.thumbnail}
+                  alt="Course"
+                  className="w-full h-44 object-cover"
+                />
+
+                <div className="p-5 space-y-3">
+                  <small className="font-bold bg-[#225499] text-white rounded-full px-2 py-1">
+                    {course.type == "online" ? "🟢 Online" : "🔴 Offline"}
+                  </small>
+                  <h2 className="text-xl font-semibold text-gray-800 group-hover:text-[#F09819] transition">
+                    {course.title}
+                  </h2>
+                  <p className="text-gray-600 text-sm flex-grow">
+                    {course.description}
+                  </p>
+
+                  {/* Extra info */}
+                  <div className="flex justify-between text-sm text-gray-500 pt-2">
+                    <span>Duration: {course.duration}</span>
+                    <span>Total Class: {course.totalClasses}</span>
+                  </div>
+                  <div className="text-left">
+                    <p className=" space-x-1 text-[#ffa800] flex items-center">
+                      <Rating
+                        initialValue={course.starCount ? course.starCount : 5} // Default rating
+                        readonly // Only display
+                        allowFraction // Show half stars
+                        size={24} // Star size (px)
+                        fillColor="#ffa800" // Filled star color
+                        emptyColor="#d1d5db" // Empty star color (Tailwind gray-300)
+                        transition // Smooth animation
+                        SVGstyle={{ display: "inline-block" }} // Extra custom style
+                      />
+                      <span className="text-gray-700 ml-2">
+                        {" "}
+                        ({course.reviewCount ? course.reviewCount : "72"}{" "}
+                        Reviews)
+                      </span>
+                    </p>
+                  </div>
+                  <div className="flex justify-between items-start">
+                    {/* Button */}
+                    <Link to={`/courses/${course.route}`}>
+                      <button className="m-2 px-[20px] py-[7px] lg:px-[30px] lg:py-[10px] text-center uppercase transition-all duration-500 bg-[linear-gradient(to_right,_#249ffd_2%,_#3a7bd5_58%,_#00d2ff_100%)] bg-[length:200%_auto] text-white shadow-[0_0_10px_#000_80%] rounded-full  hover:bg-[position:right_center] hover:text-white flex items-center gap-3 font-bold">
+                        Enroll Now
+                      </button>
+                    </Link>
+                    <div>
+                      <h2 className="text-gray-600 font-bold text-lg">
+                        <del>৳ 1000</del>
+                      </h2>
+                      <h2 className="text-gray-800 font-bold text-2xl">
+                        ৳ {course.price}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </LazyLoadWrapper>
+          ))}
+        </div>
       </div>
     </div>
   );
