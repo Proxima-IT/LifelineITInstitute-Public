@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { Rating } from "react-simple-star-rating";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
+import moment from "moment";
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -22,14 +23,13 @@ const tabs = [
   { id: "reviews", label: "Reviews" },
   { id: "write", label: "Write a Review" },
 ];
+
 const CourseDetails = () => {
   const { route } = useParams();
   const [courseDetails, setCourseDetails] = useState({});
   const [activeTab, setActiveTab] = useState("overview");
   const navbarHeight = 80;
   const [courseData, setCourseData] = useState([]);
-  const modules = courseDetails?.modules;
-  console.log(modules);
 
   let getLatestCourses = async () => {
     const result = await axios.get(
@@ -69,6 +69,9 @@ const CourseDetails = () => {
         setCourseDetails(res.data);
       });
   }, [route]);
+
+  const modules = courseDetails?.modules;
+  console.log(modules);
 
   function extractYouTubeID(url) {
     // Regular expression to match most YouTube URL formats
@@ -218,7 +221,7 @@ const CourseDetails = () => {
             <span>&#2547; {parseFloat(courseDetails.price).toFixed(2)}</span>
           </h1>
 
-          <Link to={`/`}>
+          <Link to={`/courses/${courseDetails.route}/pay`}>
             <button
               className="px-8 sm:px-10 lg:px-8 w-full
                 py-2 sm:py-3 rounded-lg font-bold text-center flex items-center justify-center transition-all duration-500 bg-[linear-gradient(to_right,_#fc00ff_0%,_#00dbde_51%,_#fc00ff_100%)] bg-[length:200%_auto] text-white  shadow-[0_0_20px_#eee]  hover:bg-[position:right_center] hover:text-white"
@@ -228,7 +231,7 @@ const CourseDetails = () => {
           </Link>
           <p className="text-lg text-blue-900 border-b-2 pb-2">
             <span className="font-bold">Start Date:</span>{" "}
-            {courseDetails.startDate}
+            {moment(courseDetails.startDate).format("MMMM Do YYYY")}
           </p>
           <p className="text-lg text-blue-900 border-b-2 pb-2">
             <span className="font-bold">Total Classes: </span>{" "}
@@ -278,7 +281,7 @@ const CourseDetails = () => {
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="pt-10">
         {/* Tabs */}
         <div className="flex gap-3 mb-6 overflow-x-auto">
           {tabs.map((tab) => (
@@ -318,7 +321,7 @@ const CourseDetails = () => {
             className=" bg-gray-50 p-6 rounded-lg"
           >
             <h2 className="text-xl font-semibold mb-2">Course Content</h2>
-            {modules.map((module) => (
+            {modules?.map((module) => (
               <h1 className="font-bold mt-5 flex items-center gap-3">
                 <FaArrowCircleRight />
                 {module.title}
@@ -379,13 +382,13 @@ const CourseDetails = () => {
           </section>
         </div>
 
-        <h1 className="border border-white rounded-full text-center text-white px-3 py-1 mt-5 w-1/5">
+        <h1 className="border border-white rounded-full text-center text-white px-3 py-1 mt-8 w-1/5">
           More Similar Courses
         </h1>
-        <h1 className="text-xl font-semibold my-5 text-white">
+        <h1 className="text-2xl font-semibold mt-6 text-white">
           Related Courses
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
           {courseData.map((course) => (
             <LazyLoadWrapper>
               <div
@@ -438,7 +441,7 @@ const CourseDetails = () => {
                   </div>
                   <div className="flex justify-between items-start">
                     {/* Button */}
-                    <Link to={`/courses/${course.route}`}>
+                    <Link to={`/courses/${course.route}/pay`}>
                       <button className="m-2 px-[20px] py-[7px] lg:px-[30px] lg:py-[10px] text-center uppercase transition-all duration-500 bg-[linear-gradient(to_right,_#249ffd_2%,_#3a7bd5_58%,_#00d2ff_100%)] bg-[length:200%_auto] text-white shadow-[0_0_10px_#000_80%] rounded-full  hover:bg-[position:right_center] hover:text-white flex items-center gap-3 font-bold">
                         Enroll Now
                       </button>

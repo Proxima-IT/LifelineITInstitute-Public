@@ -19,6 +19,7 @@ import Terms from "@/pages/General/Terms"
 import Refund from "@/pages/General/Refund"
 import ErrorPage from "@/pages/Error/ErrorPage"
 import OurTeam from "@/pages/OurTeam/OurTeam"
+import PaymentMethod from "@/pages/Payment/PaymentMethod"
 
 const Router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const Router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses></Courses>,
+      },
+      {
+        path: "/courses/:route",
+        element: <CourseDetails></CourseDetails>,
+      },
+      {
+        path: "/courses/:route/pay",
+        element: <PaymentMethod></PaymentMethod>,
       },
       {
         path: "/about",
@@ -49,10 +58,7 @@ const Router = createBrowserRouter([
         path: "/student-review",
         element: <StudentReview></StudentReview>,
       },
-      {
-        path: "/courses/:route",
-        element: <CourseDetails></CourseDetails>,
-      },
+      
 
       {
         path: "/contact",
