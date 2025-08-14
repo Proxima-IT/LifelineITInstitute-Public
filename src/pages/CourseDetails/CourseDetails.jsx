@@ -15,6 +15,7 @@ import {
 import { Rating } from "react-simple-star-rating";
 import LazyLoadWrapper from "@/components/shared/LazyLoadWrapper";
 import moment from "moment";
+import RecentReview from "./RecentReview";
 
 const tabs = [
   { id: "overview", label: "Overview" },
@@ -329,6 +330,7 @@ const CourseDetails = () => {
             ))}
           </section>
 
+            {/* instructor  */}
           <section
             ref={sectionsRef.instructor}
             className=" bg-gray-50 p-6 rounded-lg"
@@ -370,7 +372,7 @@ const CourseDetails = () => {
             className=" bg-gray-50 p-6 rounded-lg"
           >
             <h2 className="text-xl font-semibold mb-2">Recent Reviews</h2>
-            <p>Placeholder content for Reviews.</p>
+            <RecentReview></RecentReview>
           </section>
 
           <section
