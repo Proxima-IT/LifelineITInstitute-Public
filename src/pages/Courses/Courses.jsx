@@ -87,7 +87,7 @@ const OurCourses = () => {
                 <img
                   src={course.thumbnail}
                   alt="Course"
-                  className="w-full h-44 object-cover"
+                  className="w-full h-52 object-cover"
                 />
 
                 <div className="p-5 space-y-3">
