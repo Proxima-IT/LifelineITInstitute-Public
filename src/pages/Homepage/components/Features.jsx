@@ -14,7 +14,7 @@ const Features = () => {
   const [startCount, setStartCount] = useState(false);
   const countRef = useRef(null);
   const { data, isLoading, isError, error } = getAdminPanelData();
-  console.log(data?.studentInfo.totalStudents);
+  console.log(data?.studentInfo?.totalStudents);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

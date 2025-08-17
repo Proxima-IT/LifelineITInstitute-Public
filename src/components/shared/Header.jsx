@@ -17,6 +17,7 @@ import { HashLink } from "react-router-hash-link";
 
 import { useRef } from "react";
 import { GiGraduateCap } from "react-icons/gi";
+import { useDashboard } from "@/hooks/useDashboard";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +30,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   const searchRef = useRef(null); // 👈 Add this
+
+  const { data, isLoading, error } = useDashboard();
+  console.log(data);
 
   useEffect(() => {
     const verifyLogin = async () => {
@@ -181,14 +185,19 @@ const Header = () => {
           <Link
             to={
               isLoggedIn
-                ? "https://dashboard.lifelineitinstitute.com"
+                ? data?.role === "admin"
+                  ? "https://admin.lifelineitinstitute.com"
+                  : "https://dashboard.lifelineitinstitute.com"
                 : "/login"
             }
           >
             <button className="text-white text-sm lg:text-base text-center lg:px-[22px] px-[12px] py-[6px] lg:py-[11px] rounded-[10px] shadow-[0_0_10px_#000] bg-gradient-to-r from-[#f09619ee] via-[#d3c440] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center]  font-bold flex items-center gap-2">
               {isLoggedIn ? (
                 <>
-                  <span className="text-xl"><GiGraduateCap /></span> Dashboard
+                  <span className="text-xl">
+                    <GiGraduateCap />
+                  </span>{" "}
+                  Dashboard
                 </>
               ) : (
                 "Login"
@@ -216,7 +225,10 @@ const Header = () => {
           </div>
 
           {/* Mobile Nav Toggle */}
-          <div className="text-white text-2xl lg:hidden hover:text-blue-500" onClick={toggleNavbar}>
+          <div
+            className="text-white text-2xl lg:hidden hover:text-blue-500"
+            onClick={toggleNavbar}
+          >
             <AiOutlineMenuFold />
           </div>
           {isOpen && (
