@@ -31,10 +31,10 @@ const ContactPage = () => {
               </h3>
               <p className="mt-2">
                 { 
-                  data?.contactInfo.map((contact, index) => (
+                  data?.contactInfo?.map((contact, index) => (
                     <div key={index}>
-                      <strong>{contact.number? contact.number : ""}</strong>{" "}
-                      <span>({contact.time })</span>
+                      <strong>{contact.number? contact.number : "01887 893100"}</strong>{" "}
+                      <span>({contact.time ?  contact.time : "6 AM to 12 PM"})</span>
                     </div>
                   ))
                 }
