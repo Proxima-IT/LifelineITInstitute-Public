@@ -134,7 +134,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data? data.studentInfo.totalStudents:25000}
+                    end={Number(data?.studentInfo?.totalStudents) || 5000}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -153,7 +153,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data? data.studentInfo.successCount:22000}
+                    end={Number(data?.studentInfo?.successCount) || 22000}
                     duration={2.5}
                     separator=","
                     start={0}
@@ -172,7 +172,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={data? data.studentInfo.courseCompletors:21500}
+                    end={Number(data?.studentInfo?.courseCompletors) || 21500}
                     duration={2.5}
                     separator=","
                     start={0}

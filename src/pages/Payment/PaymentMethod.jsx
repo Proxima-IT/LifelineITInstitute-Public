@@ -3,14 +3,20 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bkash from '../../assets/bkash.png'
 import nagad from '../../assets/nagad.png'
+import axios from "axios";
 
 const PaymentMethod = () => {
+
+  const handlePay = ()=>{
+    axios.post(`${import.meta.env.VITE_API_URL}/api/payment/pay`)
+    .then(res=>console.log(res.data))
+  }
   return (
     <div className="flex flex-col items-center w-full">
       <h1 className="text-white mt-10 font-bold text-2xl">Payment Method</h1>
 
       <div className="bg-white rounded-md p-10 w-1/3 mx-auto mt-5 flex justify-around">
-        <Link className="w-1/3 shadow-md rounded-md">
+        <Link onClick={handlePay} className="w-1/3 shadow-md rounded-md">
             <img src={bkash} alt="bkash"  />
         </Link>
         <Link className="w-1/3 shadow-md rounded-md">
