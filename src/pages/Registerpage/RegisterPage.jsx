@@ -78,6 +78,13 @@ const RegisterPage = () => {
 
   // if (checking) return null
 
+  const handleClick = () => {
+    // navigate("/our-courses");
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100); // delay to ensure page loads
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4 bg-cover bg-center"
@@ -306,6 +313,7 @@ const RegisterPage = () => {
             If you’ve already created an account, then
             <Link
               to="/login"
+              onClick={handleClick}
               className="text-blue-600 font-semibold no-underline hover:underline ml-2"
             >
               Login

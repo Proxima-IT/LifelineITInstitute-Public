@@ -1,80 +1,79 @@
-import React, { useEffect, useState } from "react"
-import "../../Footer.css"
-import { Link, useNavigate } from "react-router-dom"
-import { Checkbox } from "@mui/material"
-import axios from "axios"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
-import { IoMdEye, IoMdEyeOff } from "react-icons/io"
+import React, { useEffect, useState } from "react";
+import "../../Footer.css";
+import { Link, useNavigate } from "react-router-dom";
+import { Checkbox } from "@mui/material";
+import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import cerbg from "../../assets/cerbg.jpg";
 
 const LoginPage = () => {
-  const [checking, setChecking] = useState(true)
-  const navigate = useNavigate()
-  const [showPassword, setShowPassword] = useState(false)
+  const [checking, setChecking] = useState(true);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   // Checks if user already logged in
-useEffect(() => {
-  const checkLogin = async () => {
-    try {
-      const result = await axios.get(
-        import.meta.env.VITE_API_URL + "/api/auth/check",
-        { withCredentials: true }
-      );
+  useEffect(() => {
+    const checkLogin = async () => {
+      try {
+        const result = await axios.get(
+          import.meta.env.VITE_API_URL + "/api/auth/check",
+          { withCredentials: true }
+        );
 
-      if (result.data.status) {
-        window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL;
-      } else {
-        setChecking(false);
-        console.log("Okay, not logged in");
+        if (result.data.status) {
+          window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL;
+        } else {
+          setChecking(false);
+          console.log("Okay, not logged in");
+        }
+      } catch (err) {
+        console.error("Error while checking login status:", err);
+        // Optional: Show alert if needed
       }
-    } catch (err) {
-      console.error("Error while checking login status:", err);
-      // Optional: Show alert if needed
-    }
-  };
+    };
 
-  checkLogin();
-}, []);
-
+    checkLogin();
+  }, []);
 
   const handleLogin = async (e) => {
-    const MySwal = withReactContent(Swal)
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const password = form.password.value
+    const MySwal = withReactContent(Swal);
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
     try {
       const result = await axios.post(
         import.meta.env.VITE_API_URL + "/api/auth/login",
         { email, password },
         { withCredentials: true }
-      )
+      );
 
       if (result.data.success) {
-        console.log(result.data)
-        const userName = result.data.name
-        const userRole = result.data.role
+        console.log(result.data);
+        const userName = result.data.name;
+        const userRole = result.data.role;
 
         MySwal.fire({
           title: `Welcome Back, ${userName}`,
           text: result.data.message,
           icon: "success",
           confirmButtonText: "Cool!",
-        })
+        });
 
         setTimeout(() => {
-          console.log(userRole)
+          console.log(userRole);
           if (userRole === "admin") {
-            window.location.href = import.meta.env.VITE_ADMIN_DASHBOARD_URL
+            window.location.href = import.meta.env.VITE_ADMIN_DASHBOARD_URL;
           } else if (userRole === "student") {
-            window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL
+            window.location.href = import.meta.env.VITE_STUDENT_DASHBOARD_URL;
           } else {
             // Optional: unknown role fallback
-            window.location.href = "/"
+            window.location.href = "/";
           }
-        }, 3000)
+        }, 3000);
       }
     } catch (error) {
       MySwal.fire({
@@ -82,16 +81,24 @@ useEffect(() => {
         text: "The email or password you entered doesn’t match our records. Please try again",
         icon: "error",
         confirmButtonText: "Okay",
-      })
-      console.error("Axios Error:", error.response?.data || error.message)
+      });
+      console.error("Axios Error:", error.response?.data || error.message);
     }
-  }
+  };
 
   // if (checking) return null
 
+  const handleClick = () => {
+    // navigate("/our-courses");
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100); // delay to ensure page loads
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4 bg-cover bg-center"
-    // style={{ backgroundImage: `url(${cerbg})` }}
+    <div
+      className="min-h-screen flex items-center justify-center bg-[linear-gradient(135deg,_#dbeafe_0%,_#e0e7ff_100%)] font-sans p-4 bg-cover bg-center"
+      // style={{ backgroundImage: `url(${cerbg})` }}
     >
       <div className="w-full max-w-[28rem]">
         <div className="bg-white rounded-[10px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] p-8 backdrop-blur-sm">
@@ -175,7 +182,7 @@ useEffect(() => {
               />
               <span
                 onClick={() => {
-                  setShowPassword(!showPassword)
+                  setShowPassword(!showPassword);
                 }}
                 className="absolute right-4 top-[30px]"
               >
@@ -246,6 +253,7 @@ useEffect(() => {
             If you don’t have any existing account, first
             <Link
               to="/register"
+              onClick={handleClick}
               className="text-blue-600 font-semibold no-underline hover:underline ml-2"
             >
               Sign Up
@@ -254,7 +262,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

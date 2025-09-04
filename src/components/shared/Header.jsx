@@ -191,7 +191,7 @@ const Header = () => {
                 : "/login"
             }
           >
-            <button className="text-white text-sm lg:text-base text-center lg:px-[22px] px-[12px] py-[6px] lg:py-[11px] rounded-[10px] shadow-[0_0_10px_#000] bg-gradient-to-r from-[#f09619ee] via-[#d3c440] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center]  font-bold flex items-center gap-2">
+            <button onClick={handleClick} className="text-white text-sm lg:text-base text-center lg:px-[22px] px-[12px] py-[6px] lg:py-[11px] rounded-[10px] shadow-[0_0_10px_#000] bg-gradient-to-r from-[#f09619ee] via-[#d3c440] to-[#f9a917] bg-[length:200%_auto] transition-all duration-500 hover:bg-[position:right_center]  font-bold flex items-center gap-2">
               {isLoggedIn ? (
                 <>
                   <span className="text-xl">
