@@ -134,7 +134,7 @@ const Features = () => {
               <h3 ref={countRef} className="text-4xl font-bold text-white mb-3">
                 {startCount && (
                   <CountUp
-                    end={Number(data?.studentInfo?.totalStudents) || 5000}
+                    end={Number(data?.studentInfo?.totalStudents) || 25000}
                     duration={2.5}
                     separator=","
                     start={0}

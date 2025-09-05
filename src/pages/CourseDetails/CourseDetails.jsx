@@ -222,7 +222,7 @@ const CourseDetails = () => {
             <span>&#2547; {parseFloat(courseDetails.price).toFixed(2)}</span>
           </h1>
 
-          <Link to={`/courses/${courseDetails.route}/pay`}>
+          <Link to={`/courses/${courseDetails.route}/pay`} state={{ courseDetails }}>
             <button
               className="px-8 sm:px-10 lg:px-8 w-full
                 py-2 sm:py-3 rounded-lg font-bold text-center flex items-center justify-center transition-all duration-500 bg-[linear-gradient(to_right,_#fc00ff_0%,_#00dbde_51%,_#fc00ff_100%)] bg-[length:200%_auto] text-white  shadow-[0_0_20px_#eee]  hover:bg-[position:right_center] hover:text-white"

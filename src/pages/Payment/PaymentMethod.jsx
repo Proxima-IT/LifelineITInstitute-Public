@@ -1,11 +1,15 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import bkash from '../../assets/bkash.png'
 import nagad from '../../assets/nagad.png'
+import bank from '../../assets/Asset 1.png'
 import axios from "axios";
 
 const PaymentMethod = () => {
+
+   const location = useLocation();
+  const { courseDetails } = location.state || {};
 
   const handlePay = ()=>{
     axios.post(`${import.meta.env.VITE_API_URL}/api/payment/pay`)
@@ -15,12 +19,16 @@ const PaymentMethod = () => {
     <div className="flex flex-col items-center w-full">
       <h1 className="text-white mt-10 font-bold text-2xl">Payment Method</h1>
 
-      <div className="bg-white rounded-md p-10 w-1/3 mx-auto mt-5 flex justify-around">
-        <Link onClick={handlePay} className="w-1/3 shadow-md rounded-md">
+      <div className="bg-white rounded-md p-10 w-1/3 mx-auto mt-5 flex gap-4 justify-around">
+        <Link onClick={handlePay} className="w-1/2 shadow-md rounded-md flex items-center">
             <img src={bkash} alt="bkash"  />
         </Link>
-        <Link className="w-1/3 shadow-md rounded-md">
+        <Link className="w-1/2 shadow-md rounded-md flex items-center">
             <img src={nagad} alt="nagad"  />
+        </Link>
+        <Link to={`/courses/${courseDetails.route}/pay/bank`} className="w-1/2 shadow-md rounded-md flex flex-col justify-center">
+            <img src={bank} alt="nagad"  />
+            <h3 className="text-sm">Deposit / NPSB</h3>
         </Link>
       </div>
 

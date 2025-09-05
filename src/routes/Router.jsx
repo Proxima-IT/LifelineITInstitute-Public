@@ -20,6 +20,7 @@ import Refund from "@/pages/General/Refund"
 import ErrorPage from "@/pages/Error/ErrorPage"
 import OurTeam from "@/pages/OurTeam/OurTeam"
 import PaymentMethod from "@/pages/Payment/PaymentMethod"
+import BankPayment from "@/pages/Payment/BankPayment"
 
 const Router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const Router = createBrowserRouter([
         element: <PaymentMethod></PaymentMethod>,
       },
       {
+        path: "/courses/:route/pay/bank",
+        element: <BankPayment></BankPayment>,
+      },
+      {
         path: "/about",
         element: <AboutPage></AboutPage>,
       },
@@ -57,8 +62,7 @@ const Router = createBrowserRouter([
       {
         path: "/student-review",
         element: <StudentReview></StudentReview>,
-      },
-      
+      },      
 
       {
         path: "/contact",
