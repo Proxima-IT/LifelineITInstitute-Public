@@ -89,9 +89,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-sm text-secondary ">
-            Lifeline IT is a Govt. approved organization | Est. 18
-            <sup>th</sup> August, 2021 | Over 25,000+ Students Trained | Trusted
-            by 2.50 Lakh+ Followers on Social Media.
+            Lifeline IT Training Institute is a Govt. approved & well-reputed organization | Est. 18 <sup>th</sup> August 2021 | Over 25,000+ Students Trained | Trusted by 3.5 Lakh+ Followers on social media.
+            
           </p>
 
           <div className="flex gap-3 items-center justify-start">

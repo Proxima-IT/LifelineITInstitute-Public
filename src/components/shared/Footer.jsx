@@ -33,10 +33,7 @@ const Footer = () => {
             </Link>
           </div>
           <p className="text-sm text-gray-200 lg:text-justify leading-relaxed">
-            Lifeline IT Training Institute is a Govt. approved IT Training
-            center providing industry-relevant since 2021. We offer affordable,
-            career-focused courses in digital skills to help students thrive in
-            freelancing and professional careers.
+            Lifeline IT Training Institute is a Govt. approved IT training center in Chattogram, providing practical, industry-relevant, and career-focused digital skills training since 2021. We offer both online and offline classes on Computer Basics, Office Applications, Artificial Intelligence (AI), Digital Marketing, Graphic Design, Video Editing, Programming, and many more courses designed to help students succeed in freelancing and professional careers.
           </p>
 
           <Link to="/contact">

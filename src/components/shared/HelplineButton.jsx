@@ -18,7 +18,7 @@ export default function HelplineButton() {
         <a href="tel:+8801867101740" className="bg-pink-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
           <Phone className="w-5 h-5" />
         </a>
-        <a href="http://wa.me/8801867101740" className="bg-green-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
+        <a href="http://wa.me/8801887893100" className="bg-green-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
           <FaWhatsapp className="w-5 h-5" />
         </a>
         <a href="mailto:lifelineitt.institute@gmail.com" className="bg-blue-500 text-white p-3 rounded-full shadow hover:scale-105 transition">
